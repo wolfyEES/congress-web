@@ -1,0 +1,431 @@
+/* ==============================
+   BOTONES
+================================ */
+
+/* Botón principal dorado */
+.btn-gold {
+  display: inline-block;
+  padding: 16px 40px;
+  border: 2px solid var(--gold);
+  border-radius: 50px;
+  color: var(--gold);
+  background: transparent;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 
+    0 0 20px rgba(212, 175, 55, 0.2),
+    inset 0 0 0 rgba(212, 175, 55, 0);
+}
+
+/* CORREGIDO: El efecto de brillo solo aparece en hover */
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: translateY(-50%);
+  transition: none;
+  z-index: 1;
+}
+
+/* Solo se anima cuando haces hover */
+.btn-gold:hover::before {
+  animation: shine 0.6s ease;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.btn-gold:hover {
+  color: var(--black);
+  background: var(--gold);
+  box-shadow: 
+    0 0 40px rgba(212, 175, 55, 0.8),
+    0 8px 25px rgba(212, 175, 55, 0.4),
+    inset 0 0 30px rgba(212, 175, 55, 0.3);
+  transform: translateY(-3px);
+}
+
+.btn-gold span {
+  position: relative;
+  z-index: 2;
+}
+
+/* Botón secundario rojo */
+.btn-red {
+  display: inline-block;
+  padding: 16px 40px;
+  border: 2px solid var(--red);
+  border-radius: 50px;
+  color: var(--red);
+  background: transparent;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 20px rgba(139, 0, 0, 0.2);
+}
+
+.btn-red::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.btn-red:hover::before {
+  animation: shine 0.6s ease;
+}
+
+.btn-red:hover {
+  color: var(--white);
+  background: var(--red);
+  box-shadow: 
+    0 0 40px rgba(139, 0, 0, 0.8),
+    0 8px 25px rgba(139, 0, 0, 0.4);
+  transform: translateY(-3px);
+}
+
+.btn-red span {
+  position: relative;
+  z-index: 2;
+}
+
+/* ==============================
+   CARDS / TARJETAS
+================================ */
+
+.card {
+  background: linear-gradient(135deg, rgba(20, 0, 0, 0.8), rgba(11, 11, 11, 0.9));
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 20px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+/* Efecto de brillo en esquina */
+.card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(212, 175, 55, 0.15),
+    transparent 60%
+  );
+  transition: all 0.6s ease;
+}
+
+.card:hover::before {
+  top: -25%;
+  right: -25%;
+}
+
+.card:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(212, 175, 55, 0.2);
+  transform: translateY(-10px);
+}
+
+.card h3 {
+  color: var(--gold);
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  font-family: 'Playfair Display', serif;
+}
+
+.card p {
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+/* ==============================
+   SECCIÓN DE CONTENIDO
+================================ */
+
+.section {
+  padding: 100px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Decoración bajo el título */
+.section-title::after {
+  content: '★ ★ ★';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--red);
+  font-size: 0.8rem;
+  letter-spacing: 10px;
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--gray);
+  font-size: 1.2rem;
+  margin-bottom: 60px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==============================
+   GRID DE ELEMENTOS
+================================ */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-top: 60px;
+}
+
+/* ==============================
+   BADGES / ETIQUETAS
+================================ */
+
+.badge {
+  display: inline-block;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, var(--red), #b8860b);
+  color: var(--white);
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(139, 0, 0, 0.4);
+  animation: bounce 2s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* ==============================
+   LÍNEA DECORATIVA
+================================ */
+
+.divider {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold),
+    transparent
+  );
+  margin: 60px 0;
+  position: relative;
+}
+
+.divider::before,
+.divider::after {
+  content: '◆';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold);
+  font-size: 1.2rem;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+/* ==============================
+   FORMULARIOS
+================================ */
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-label {
+  display: block;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 15px 20px;
+  background: rgba(11, 11, 11, 0.8);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  border-radius: 12px;
+  color: var(--white);
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  background: rgba(11, 11, 11, 0.95);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--gray);
+}
+
+/* ==============================
+   IMÁGENES CON EFECTO
+================================ */
+
+.img-hover {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 2px solid rgba(212, 175, 55, 0.2);
+}
+
+.img-hover img {
+  transition: transform 0.6s ease;
+  display: block;
+  width: 100%;
+}
+
+.img-hover:hover img {
+  transform: scale(1.1);
+}
+
+.img-hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 0, 0, 0.3),
+    rgba(212, 175, 55, 0.3)
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.img-hover:hover::after {
+  opacity: 1;
+}
+
+/* ==============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 20px;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .card {
+    padding: 30px;
+  }
+
+  .btn-gold,
+  .btn-red {
+    padding: 14px 32px;
+    font-size: 0.9rem;
+  }
+}
