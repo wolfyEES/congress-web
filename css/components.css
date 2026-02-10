@@ -195,7 +195,8 @@
   font-family: 'Playfair Display', serif;
   font-size: 3rem;
   color: var(--gold);
-  text-align: center;
+  /* text-align: center; */
+  display: contents;
   margin-bottom: 20px;
   position: relative;
   display: inline-block;

@@ -292,6 +292,25 @@ main {
   }
 }
 
+/* BOTÓN MENÚ HAMBURGUESA */
+.menu-toggle {
+  display: none; /* OCULTO EN DESKTOP */
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1001;
+}
+
+.menu-toggle span {
+  width: 28px;
+  height: 3px;
+  background: var(--gold);
+  transition: .3s;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 1024px) {
