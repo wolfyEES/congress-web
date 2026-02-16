@@ -7,9 +7,9 @@
   display: inline-block;
   padding: 16px 40px;
   border: 2px solid var(--gold);
-  border-radius: 50px;
-  color: var(--gold);
-  background: transparent;
+  border-radius: 8px; /* Cambiado de 50px a 8px para esquinas cuadradas */
+  color: #000000; /* Texto negro en estado normal */
+  background: var(--gold); /* Fondo dorado sólido */
   font-weight: 600;
   letter-spacing: 1.2px;
   text-transform: uppercase;
@@ -17,13 +17,11 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: all 0.4s ease;
-  box-shadow: 
-    0 0 20px rgba(212, 175, 55, 0.2),
-    inset 0 0 0 rgba(212, 175, 55, 0);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
 }
 
-/* CORREGIDO: El efecto de brillo solo aparece en hover */
 .btn-gold::before {
   content: '';
   position: absolute;
@@ -42,7 +40,6 @@
   z-index: 1;
 }
 
-/* Solo se anima cuando haces hover */
 .btn-gold:hover::before {
   animation: shine 0.6s ease;
 }
@@ -57,18 +54,16 @@
 }
 
 .btn-gold:hover {
-  color: var(--black);
-  background: var(--gold);
-  box-shadow: 
-    0 0 40px rgba(212, 175, 55, 0.8),
-    0 8px 25px rgba(212, 175, 55, 0.4),
-    inset 0 0 30px rgba(212, 175, 55, 0.3);
-  transform: translateY(-3px);
+  color: #000000; /* Texto negro */
+  background: #e6b800; /* Dorado más intenso */
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
 }
 
 .btn-gold span {
   position: relative;
   z-index: 2;
+  color: #000000; /* Asegurar que el texto sea negro */
 }
 
 /* Botón secundario rojo */
@@ -76,9 +71,9 @@
   display: inline-block;
   padding: 16px 40px;
   border: 2px solid var(--red);
-  border-radius: 50px;
-  color: var(--red);
-  background: transparent;
+  border-radius: 8px; /* Cambiado de 50px a 8px para esquinas cuadradas */
+  color: #ffffff; /* Texto blanco */
+  background: var(--red); /* Fondo rojo sólido */
   font-weight: 600;
   letter-spacing: 1.2px;
   text-transform: uppercase;
@@ -86,8 +81,9 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: all 0.4s ease;
-  box-shadow: 0 0 20px rgba(139, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
 }
 
 .btn-red::before {
@@ -112,12 +108,10 @@
 }
 
 .btn-red:hover {
-  color: var(--white);
-  background: var(--red);
-  box-shadow: 
-    0 0 40px rgba(139, 0, 0, 0.8),
-    0 8px 25px rgba(139, 0, 0, 0.4);
-  transform: translateY(-3px);
+  color: #ffffff; /* Texto blanco */
+  background: #b30000; /* Rojo más intenso */
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(139, 0, 0, 0.4);
 }
 
 .btn-red span {
@@ -130,17 +124,15 @@
 ================================ */
 
 .card {
-  background: linear-gradient(135deg, rgba(20, 0, 0, 0.8), rgba(11, 11, 11, 0.9));
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  background: rgba(20, 0, 0, 0.9); /* Rojo oscuro sólido */
+  border: 2px solid var(--gold); /* Borde dorado */
   border-radius: 20px;
   padding: 40px;
   position: relative;
   overflow: hidden;
   transition: all 0.4s ease;
-  backdrop-filter: blur(10px);
 }
 
-/* Efecto de brillo en esquina */
 .card::before {
   content: '';
   position: absolute;
@@ -154,6 +146,7 @@
     transparent 60%
   );
   transition: all 0.6s ease;
+  opacity: 0.3;
 }
 
 .card:hover::before {
@@ -162,23 +155,24 @@
 }
 
 .card:hover {
-  border-color: rgba(212, 175, 55, 0.5);
-  box-shadow: 
-    0 15px 40px rgba(0, 0, 0, 0.6),
-    0 0 60px rgba(212, 175, 55, 0.2);
-  transform: translateY(-10px);
+  border-color: var(--gold);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  transform: translateY(-5px);
+  background: rgba(30, 0, 0, 0.95); /* Rojo más intenso al hover */
 }
 
 .card h3 {
-  color: var(--gold);
-  font-size: 1.8rem;
+  color: #ffffff; /* Texto blanco */
+  font-size: 1.6rem;
   margin-bottom: 15px;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
 }
 
 .card p {
-  color: var(--gray);
+  color: #ffffff; /* Texto blanco */
   line-height: 1.7;
+  opacity: 0.9;
 }
 
 /* ==============================
@@ -195,23 +189,19 @@
   font-family: 'Playfair Display', serif;
   font-size: 3rem;
   color: var(--gold);
-  /* text-align: center; */
-  display: contents;
-  margin-bottom: 20px;
+  text-align: center;
+  margin: 0 auto 20px;
   position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
+  display: block;
 }
 
-/* Decoración bajo el título */
 .section-title::after {
   content: '★ ★ ★';
   position: absolute;
   bottom: -20px;
   left: 50%;
   transform: translateX(-50%);
-  color: var(--red);
+  color: var(--red); /* Estrellas rojas */
   font-size: 0.8rem;
   letter-spacing: 10px;
   animation: twinkle 2s ease-in-out infinite;
@@ -228,12 +218,13 @@
 
 .section-subtitle {
   text-align: center;
-  color: var(--gray);
+  color: #ffffff; /* Texto blanco */
   font-size: 1.2rem;
   margin-bottom: 60px;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  opacity: 0.9;
 }
 
 /* ==============================
@@ -254,15 +245,15 @@
 .badge {
   display: inline-block;
   padding: 8px 20px;
-  background: linear-gradient(135deg, var(--red), #b8860b);
-  color: var(--white);
+  background: var(--red); /* Fondo rojo sólido */
+  color: #ffffff; /* Texto blanco */
   border-radius: 30px;
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
-  box-shadow: 0 4px 15px rgba(139, 0, 0, 0.4);
   animation: bounce 2s ease infinite;
+  border: 1px solid var(--gold);
 }
 
 @keyframes bounce {
@@ -281,12 +272,7 @@
 .divider {
   width: 100%;
   height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--gold),
-    transparent
-  );
+  background: var(--gold); /* Línea dorada sólida */
   margin: 60px 0;
   position: relative;
 }
@@ -319,7 +305,7 @@
 
 .form-label {
   display: block;
-  color: var(--gold);
+  color: var(--gold); /* Texto dorado */
   font-weight: 600;
   margin-bottom: 10px;
   letter-spacing: 0.5px;
@@ -330,10 +316,10 @@
 .form-textarea {
   width: 100%;
   padding: 15px 20px;
-  background: rgba(11, 11, 11, 0.8);
-  border: 2px solid rgba(212, 175, 55, 0.3);
-  border-radius: 12px;
-  color: var(--white);
+  background: rgba(11, 11, 11, 0.8); /* Fondo negro translúcido */
+  border: 2px solid var(--gold); /* Borde dorado */
+  border-radius: 8px;
+  color: #ffffff; /* Texto blanco */
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   transition: all 0.3s ease;
@@ -342,8 +328,8 @@
 
 .form-input:focus,
 .form-textarea:focus {
-  border-color: var(--gold);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  border-color: var(--red); /* Borde rojo al focus */
+  box-shadow: 0 0 20px rgba(139, 0, 0, 0.3);
   background: rgba(11, 11, 11, 0.95);
 }
 
@@ -354,7 +340,7 @@
 
 .form-input::placeholder,
 .form-textarea::placeholder {
-  color: var(--gray);
+  color: #999999; /* Placeholder gris */
 }
 
 /* ==============================
@@ -365,7 +351,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 20px;
-  border: 2px solid rgba(212, 175, 55, 0.2);
+  border: 2px solid var(--gold); /* Borde dorado */
 }
 
 .img-hover img {
@@ -385,11 +371,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(139, 0, 0, 0.3),
-    rgba(212, 175, 55, 0.3)
-  );
+  background: rgba(139, 0, 0, 0.3); /* Overlay rojo */
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -428,5 +410,181 @@
   .btn-red {
     padding: 14px 32px;
     font-size: 0.9rem;
+  }
+}
+
+/* ==============================
+   WHATSAPP FLOAT CON ICONO CSS
+================================ */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 65px;
+  height: 65px;
+  background: var(--red); /* Fondo rojo */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  text-decoration: none;
+  border: 2px solid var(--gold); /* Borde dorado */
+}
+
+.whatsapp-float::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.whatsapp-float:hover::before {
+  transform: translateX(100%);
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  background: #b30000; /* Rojo más intenso */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.whatsapp-float:active {
+  transform: scale(1.05);
+  transition: transform 0.1s ease;
+}
+
+.whatsapp-icon {
+  position: relative;
+  z-index: 2;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.whatsapp-icon svg {
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+}
+
+.whatsapp-icon svg path {
+  fill: #ffffff; /* Icono blanco */
+}
+
+/* Efecto de pulso suave */
+.whatsapp-float::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: rgba(139, 0, 0, 0.2); /* Pulsación roja */
+  border-radius: 50%;
+  z-index: 1;
+  animation: pulse 2s ease-in-out infinite;
+  opacity: 0;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.4;
+  }
+}
+
+/* Responsive para WhatsApp */
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .whatsapp-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .whatsapp-float {
+    bottom: 15px;
+    right: 15px;
+    width: 55px;
+    height: 55px;
+  }
+  
+  .whatsapp-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* ==============================
+   CLASES ESPECIALES DE COLOR (para HTML)
+================================ */
+
+.color-section {
+  padding: 120px 40px;
+  background: var(--red); /* Fondo rojo sólido */
+  color: #ffffff; /* Texto blanco */
+  text-align: center;
+}
+
+.color-section h2,
+.color-section h3,
+.color-section h4 {
+  color: #ffffff; /* Títulos blancos */
+}
+
+.color-section p {
+  color: #ffffff; /* Texto blanco */
+  opacity: 0.9;
+}
+
+.alternate-section {
+  padding: 120px 40px;
+  background: #ffffff; /* Fondo blanco sólido */
+  color: #000000; /* Texto negro */
+  text-align: center;
+}
+
+.alternate-section h2,
+.alternate-section h3,
+.alternate-section h4 {
+  color: var(--red); /* Títulos rojos */
+}
+
+.alternate-section p {
+  color: #000000; /* Texto negro */
+  opacity: 0.9;
+}
+
+/* Ocultar en móviles (solo mostrar en pantallas grandes) */
+@media (max-width: 1199px) {
+  .color-section,
+  .alternate-section {
+    display: none;
   }
 }

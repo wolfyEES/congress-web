@@ -13,20 +13,17 @@
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   width: 100%;
   height: var(--header-height);
   padding: 0 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(11, 11, 11, 0.85);
-  backdrop-filter: blur(12px);
+  background: #000000; /* Fondo negro sólido */
   z-index: 1000;
-  transition: transform 0.4s ease, background 0.3s ease, box-shadow 0.3s ease;
-  
-  /* Borde decorativo superior */
-  border-top: 3px solid transparent;
-  border-image: linear-gradient(90deg, var(--red), var(--gold), var(--red)) 1;
+  transition: all 0.4s ease;
+  border-bottom: 2px solid var(--gold); /* Borde dorado */
 }
 
 /* Efecto de luces de marquesina */
@@ -37,12 +34,7 @@
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--gold),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
   animation: marquee 3s linear infinite;
 }
 
@@ -57,46 +49,43 @@
 
 /* Estado al hacer scroll */
 .header.scrolled {
-  background: rgba(11, 11, 11, 0.98);
-  box-shadow: 
-    0 8px 30px rgba(0, 0, 0, 0.6),
-    0 0 50px rgba(212, 175, 55, 0.1);
+  background: #000000; /* Negro sólido */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
 }
 
-/* Logo con efecto brillante */
+/* Estado con menú abierto */
+.header.menu-open {
+  background: #000000; /* Negro sólido */
+}
+
+/* ==============================
+   LOGO
+================================ */
 .logo {
   font-family: 'Playfair Display', serif;
   font-size: 1.6rem;
-  color: var(--white);
+  color: #ffffff; /* Texto blanco */
   white-space: nowrap;
   font-weight: 700;
   letter-spacing: 1px;
   position: relative;
-  text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
   transition: transform 0.3s ease;
+  z-index: 1002;
 }
 
 .logo:hover {
   transform: scale(1.05);
-  text-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+  color: var(--gold); /* Dorado al hover */
 }
 
 .logo span {
   color: var(--gold);
   position: relative;
-  animation: shimmer 3s ease-in-out infinite;
 }
 
-@keyframes shimmer {
-  0%, 100% {
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-  }
-  50% {
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
-  }
-}
-
-/* Navegación */
+/* ==============================
+   NAVEGACIÓN DESKTOP
+================================ */
 .nav {
   display: flex;
   gap: 32px;
@@ -104,7 +93,7 @@
 }
 
 .nav a {
-  color: var(--white);
+  color: #ffffff; /* Texto blanco */
   text-decoration: none;
   font-weight: 500;
   position: relative;
@@ -118,45 +107,169 @@
 .nav a::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: -5px;
+  left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--red), var(--gold));
+  background: var(--gold); /* Subrayado dorado */
   transition: width 0.4s ease;
-  box-shadow: 0 0 10px var(--gold);
 }
 
 .nav a:hover {
-  color: var(--gold);
+  color: var(--gold); /* Dorado al hover */
 }
 
 .nav a:hover::after {
   width: 100%;
 }
 
-/* Los estilos del .btn-gold están en components.css */
+/* ==============================
+   MENÚ HAMBURGUESA
+================================ */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1002;
+  position: relative;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: var(--gold); /* Líneas doradas */
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Menú activo */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
+}
 
 /* ==============================
-   AJUSTE GLOBAL PARA CONTENIDO
+   NAVEGACIÓN MÓVIL
 ================================ */
-
-main {
-  padding-top: var(--header-height);
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+  
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    max-width: 350px;
+    height: 100vh;
+    background: #000000; /* Fondo negro sólido */
+    flex-direction: column;
+    justify-content: center;
+    gap: 35px;
+    transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    padding: 40px;
+    border-left: 2px solid var(--gold); /* Borde dorado */
+    z-index: 1001;
+    margin: 0;
+  }
+  
+  .nav.active {
+    right: 0;
+  }
+  
+  .nav a {
+    font-size: 1.3rem;
+    opacity: 0;
+    transform: translateX(30px);
+    color: #ffffff; /* Texto blanco */
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+    font-weight: 600;
+  }
+  
+  .nav.active a {
+    animation: slideIn 0.5s ease forwards;
+  }
+  
+  .nav a:nth-child(1) { animation-delay: 0.1s; }
+  .nav a:nth-child(2) { animation-delay: 0.2s; }
+  .nav a:nth-child(3) { animation-delay: 0.3s; }
+  .nav a:nth-child(4) { animation-delay: 0.4s; }
+  .nav a:nth-child(5) { animation-delay: 0.5s; }
+  
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Prevenir scroll cuando el menú está abierto */
+  @media (max-width: 768px) {
+  body.menu-open {
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+}
+  
+  .header {
+    padding: 0 24px;
+    height: 70px;
+  }
+  
+  :root {
+    --header-height: 70px;
+  }
+  
+  .logo {
+    font-size: 1.3rem;
+  }
+  
+  /* Footer responsive */
+  .footer {
+    padding: 80px 20px 40px;
+  }
+  
+  .footer-top h3 {
+    font-size: 2rem;
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    gap: 25px;
+  }
 }
 
 /* ==============================
    FOOTER - ESTILO CIRCO
 ================================ */
-
 .footer {
-  background: linear-gradient(180deg, #0a0000, var(--black));
-  color: var(--white);
+  background: #000000; /* Fondo negro sólido */
+  color: #ffffff; /* Texto blanco */
   padding: 100px 40px 40px;
   text-align: center;
   position: relative;
   overflow: hidden;
+  border-top: 2px solid var(--gold); /* Borde dorado */
 }
 
 /* Efecto de cortina de circo */
@@ -176,35 +289,6 @@ main {
   );
 }
 
-/* Puntos de luz decorativos */
-.footer::after {
-  content: '';
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(
-    circle,
-    rgba(212, 175, 55, 0.1),
-    transparent 70%
-  );
-  pointer-events: none;
-  animation: pulse 4s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 0.3;
-    transform: translateX(-50%) scale(1);
-  }
-  50% {
-    opacity: 0.6;
-    transform: translateX(-50%) scale(1.2);
-  }
-}
-
 .footer-top {
   position: relative;
   z-index: 1;
@@ -213,18 +297,18 @@ main {
 
 .footer-top h3 {
   font-family: 'Playfair Display', serif;
-  color: var(--gold);
+  color: var(--gold); /* Título dorado */
   font-size: 2.5rem;
   margin-bottom: 15px;
-  text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
   animation: fadeInUp 1s ease forwards;
 }
 
 .footer-top p {
-  color: var(--gray);
+  color: #ffffff; /* Texto blanco */
   margin-bottom: 40px;
   font-size: 1.1rem;
   animation: fadeInUp 1.2s ease forwards;
+  opacity: 0.9;
 }
 
 /* Links del footer */
@@ -239,7 +323,7 @@ main {
 }
 
 .footer-links a {
-  color: var(--white);
+  color: #ffffff; /* Texto blanco */
   text-decoration: none;
   position: relative;
   font-weight: 600;
@@ -256,14 +340,13 @@ main {
   top: 50%;
   transform: translateY(-50%);
   opacity: 0;
-  color: var(--gold);
+  color: var(--gold); /* Estrella dorada */
   transition: all 0.3s ease;
 }
 
 .footer-links a:hover {
-  color: var(--gold);
+  color: var(--gold); /* Dorado al hover */
   transform: translateY(-3px);
-  text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
 }
 
 .footer-links a:hover::before {
@@ -274,11 +357,12 @@ main {
 /* Copyright */
 .footer-bottom {
   font-size: 0.9rem;
-  color: var(--gray);
+  color: #ffffff; /* Texto blanco */
   padding-top: 30px;
-  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  border-top: 1px solid var(--gold); /* Línea dorada */
   position: relative;
   z-index: 1;
+  opacity: 0.8;
 }
 
 @keyframes fadeInUp {
@@ -292,148 +376,107 @@ main {
   }
 }
 
-/* BOTÓN MENÚ HAMBURGUESA */
-.menu-toggle {
-  display: none; /* OCULTO EN DESKTOP */
-  flex-direction: column;
-  gap: 6px;
-  cursor: pointer;
-  padding: 10px;
-  z-index: 1001;
+/* ==============================
+   AJUSTE GLOBAL PARA CONTENIDO
+================================ */
+main {
+  padding-top: var(--header-height);
 }
 
-.menu-toggle span {
-  width: 28px;
-  height: 3px;
-  background: var(--gold);
-  transition: .3s;
-  border-radius: 2px;
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-}
-
-/* ================= RESPONSIVE ================= */
+/* ==============================
+   RESPONSIVE ADICIONAL
+================================ */
 
 @media (max-width: 1024px) {
   .header {
-    padding: 16px 40px;
+    padding: 0 40px;
   }
-
+  
   .nav {
     gap: 22px;
   }
-
+  
   .logo {
     font-size: 1.4rem;
   }
 }
 
-@media (max-width: 768px) {
-  .header {
-    padding: 14px 24px;
-    height: 70px;
-  }
-
-  :root {
-    --header-height: 70px;
-  }
-
-  .logo {
-    font-size: 1.3rem;
-  }
-
-  /* BOTÓN MENÚ HAMBURGUESA */
-  .menu-toggle {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1001;
-  }
-
-  .menu-toggle span {
-    width: 28px;
-    height: 3px;
-    background: var(--gold);
-    transition: .3s;
-    border-radius: 2px;
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-  }
-
-  /* Navegación móvil */
-  .nav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 75%;
-    max-width: 350px;
-    height: 100vh;
-    background: linear-gradient(180deg, #1a0000, #000);
-    flex-direction: column;
-    justify-content: center;
-    gap: 35px;
-    transition: right .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
-    padding: 40px;
-  }
-
-  .nav.active {
-    right: 0;
-  }
-
-  .nav a {
-    font-size: 1.3rem;
-    opacity: 0;
-    transform: translateX(30px);
-  }
-
-  .nav.active a {
-    animation: slideIn 0.5s ease forwards;
-  }
-
-  .nav a:nth-child(1) { animation-delay: 0.1s; }
-  .nav a:nth-child(2) { animation-delay: 0.2s; }
-  .nav a:nth-child(3) { animation-delay: 0.3s; }
-  .nav a:nth-child(4) { animation-delay: 0.4s; }
-  .nav a:nth-child(5) { animation-delay: 0.5s; }
-
-  @keyframes slideIn {
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  .btn-gold {
-    margin-top: 20px;
-    padding: 14px 32px;
-  }
-
-  /* FOOTER */
-  .footer {
-    padding: 80px 20px 40px;
-  }
-
-  .footer-top h3 {
-    font-size: 2rem;
-  }
-
-  .footer-links {
-    flex-direction: column;
-    gap: 25px;
-  }
-}
-
 @media (max-width: 480px) {
+  .header {
+    padding: 0 20px;
+  }
+  
   .logo {
     font-size: 1.2rem;
   }
-
+  
   .nav {
     width: 85%;
   }
-
+  
+  .footer {
+    padding: 60px 20px 40px;
+  }
+  
   .footer-top h3 {
     font-size: 1.7rem;
   }
+  
+  .footer-links a {
+    font-size: 0.95rem;
+    padding: 6px 12px;
+  }
+}
+
+/* ==============================
+   BOTÓN DE CONTACTO EN HEADER (si existe)
+================================ */
+.header-contact {
+  padding: 10px 25px;
+  background: var(--red); /* Fondo rojo */
+  color: #ffffff; /* Texto blanco */
+  border: 2px solid var(--gold); /* Borde dorado */
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.header-contact:hover {
+  background: #b30000; /* Rojo más intenso */
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(139, 0, 0, 0.4);
+}
+
+/* ==============================
+   ESTILOS PARA ENLACES ACTIVOS
+================================ */
+.nav a.active {
+  color: var(--gold); /* Dorado para enlace activo */
+  font-weight: 600;
+}
+
+.nav a.active::after {
+  width: 100%;
+  background: var(--red); /* Subrayado rojo para activo */
+}
+
+/* ==============================
+   EFECTO DE FONDO MÓVIL MEJORADO
+================================ */
+@media (max-width: 768px) {
+  .nav {
+    background: rgba(20, 0, 0, 0.95); /* Rojo oscuro translúcido */
+  }
+}
+
+/* ==============================
+   LOGO CON DETALLES (opcional)
+================================ */
+.logo::after {
+  content: '★';
+  color: var(--red);
+  margin-left: 8px;
+  font-size: 0.8em;
+  vertical-align: super;
 }

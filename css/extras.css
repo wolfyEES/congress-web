@@ -4,7 +4,7 @@
 
 .countdown-section {
   padding: 80px 40px;
-  background: linear-gradient(135deg, #1a0000, #000);
+  background: #000000; /* Fondo negro sólido */
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -42,12 +42,11 @@
 }
 
 .countdown-item {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(11, 11, 11, 0.8));
-  border: 2px solid rgba(212, 175, 55, 0.3);
+  background: rgba(20, 0, 0, 0.9); /* Rojo oscuro sólido */
+  border: 2px solid var(--gold); /* Borde dorado */
   border-radius: 20px;
   padding: 30px 40px;
   min-width: 140px;
-  backdrop-filter: blur(10px);
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
@@ -70,6 +69,7 @@
 
 .countdown-item:hover {
   border-color: var(--gold);
+  background: rgba(30, 0, 0, 0.95); /* Rojo más intenso */
   box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
   transform: translateY(-10px);
 }
@@ -78,20 +78,20 @@
   display: block;
   font-size: 3.5rem;
   font-weight: 700;
-  color: var(--gold);
+  color: #ffffff; /* Números blancos */
   font-family: 'Playfair Display', serif;
   line-height: 1;
   margin-bottom: 10px;
-  text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
 }
 
 .countdown-label {
   display: block;
   font-size: 0.95rem;
-  color: var(--gray);
+  color: #ffffff; /* Texto blanco */
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 600;
+  opacity: 0.8;
 }
 
 /* ==============================
@@ -112,7 +112,8 @@
   height: 350px;
   cursor: pointer;
   transition: all 0.4s ease;
-  border: 2px solid rgba(212, 175, 55, 0.2);
+  border: 2px solid var(--gold); /* Borde dorado */
+  background: rgba(20, 0, 0, 0.9); /* Fondo rojo oscuro */
 }
 
 .gallery-item img {
@@ -129,11 +130,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(139, 0, 0, 0.6),
-    rgba(212, 175, 55, 0.6)
-  );
+  background: rgba(139, 0, 0, 0.6); /* Overlay rojo */
   opacity: 0;
   transition: opacity 0.4s ease;
   z-index: 1;
@@ -159,7 +156,7 @@
   left: 0;
   right: 0;
   padding: 30px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  background: rgba(0, 0, 0, 0.9); /* Fondo negro translúcido */
   transform: translateY(100%);
   transition: transform 0.4s ease;
   z-index: 2;
@@ -170,14 +167,14 @@
 }
 
 .gallery-overlay h3 {
-  color: var(--gold);
+  color: var(--gold); /* Título dorado */
   font-size: 1.4rem;
   margin-bottom: 8px;
   font-family: 'Playfair Display', serif;
 }
 
 .gallery-overlay p {
-  color: var(--white);
+  color: #ffffff; /* Texto blanco */
   font-size: 0.9rem;
 }
 
@@ -187,7 +184,7 @@
 
 .testimonials {
   padding: 100px 40px;
-  background: linear-gradient(180deg, #0a0000, #000);
+  background: #000000; /* Fondo negro sólido */
   position: relative;
   overflow: hidden;
 }
@@ -210,32 +207,34 @@
   margin: 0 auto;
   text-align: center;
   padding: 60px;
-  background: linear-gradient(135deg, rgba(20, 0, 0, 0.4), rgba(11, 11, 11, 0.6));
+  background: rgba(20, 0, 0, 0.9); /* Rojo oscuro sólido */
   border-radius: 30px;
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 2px solid var(--gold); /* Borde dorado */
   position: relative;
   z-index: 1;
 }
 
 .testimonial-text {
   font-size: 1.3rem;
-  color: #e8e8e8;
+  color: #ffffff; /* Texto blanco */
   font-style: italic;
   line-height: 1.8;
   margin-bottom: 30px;
+  opacity: 0.9;
 }
 
 .testimonial-author {
-  color: var(--gold);
+  color: var(--gold); /* Nombre dorado */
   font-size: 1.1rem;
   font-weight: 600;
   font-family: 'Playfair Display', serif;
 }
 
 .testimonial-role {
-  color: var(--gray);
+  color: #ffffff; /* Rol blanco */
   font-size: 0.9rem;
   margin-top: 5px;
+  opacity: 0.8;
 }
 
 /* ==============================
@@ -244,7 +243,7 @@
 
 .pricing {
   padding: 100px 40px;
-  background: var(--black);
+  background: #000000; /* Fondo negro sólido */
 }
 
 .pricing-grid {
@@ -256,8 +255,8 @@
 }
 
 .pricing-card {
-  background: linear-gradient(135deg, rgba(20, 0, 0, 0.6), rgba(11, 11, 11, 0.9));
-  border: 2px solid rgba(212, 175, 55, 0.3);
+  background: rgba(20, 0, 0, 0.9); /* Rojo oscuro sólido */
+  border: 2px solid var(--gold); /* Borde dorado */
   border-radius: 30px;
   padding: 50px 40px;
   text-align: center;
@@ -266,59 +265,43 @@
   transition: all 0.4s ease;
 }
 
-.pricing-card::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(135deg, var(--red), var(--gold));
-  border-radius: 30px;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  z-index: -1;
-}
-
-.pricing-card:hover::before {
-  opacity: 1;
+.pricing-card.featured {
+  border-color: var(--red); /* Borde rojo para plan destacado */
+  background: rgba(30, 0, 0, 0.95); /* Rojo más intenso */
 }
 
 .pricing-card:hover {
   transform: translateY(-15px);
   box-shadow: 0 20px 60px rgba(212, 175, 55, 0.4);
-}
-
-.pricing-card.featured {
-  border-color: var(--gold);
-  box-shadow: 0 15px 50px rgba(212, 175, 55, 0.3);
-  transform: scale(1.05);
+  background: rgba(30, 0, 0, 0.95); /* Rojo más intenso al hover */
 }
 
 .pricing-badge {
   position: absolute;
   top: 20px;
   right: 20px;
-  background: var(--gold);
-  color: var(--black);
+  background: var(--gold); /* Fondo dorado */
+  color: #000000; /* Texto negro */
   padding: 8px 20px;
   border-radius: 30px;
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
+  border: 1px solid var(--red);
 }
 
 .pricing-title {
   font-size: 1.8rem;
-  color: var(--gold);
+  color: #ffffff; /* Título blanco */
   margin-bottom: 20px;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
 }
 
 .pricing-price {
   font-size: 3.5rem;
-  color: var(--white);
+  color: var(--gold); /* Precio dorado */
   font-weight: 700;
   font-family: 'Playfair Display', serif;
   margin-bottom: 10px;
@@ -326,8 +309,9 @@
 
 .pricing-price span {
   font-size: 1.2rem;
-  color: var(--gray);
+  color: #ffffff; /* Texto blanco */
   font-weight: 400;
+  opacity: 0.8;
 }
 
 .pricing-features {
@@ -338,9 +322,10 @@
 
 .pricing-features li {
   padding: 12px 0;
-  color: var(--gray);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  color: #ffffff; /* Texto blanco */
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
   font-size: 0.95rem;
+  opacity: 0.9;
 }
 
 .pricing-features li:last-child {
@@ -349,7 +334,7 @@
 
 .pricing-features li::before {
   content: '✓';
-  color: var(--gold);
+  color: var(--gold); /* Check dorado */
   margin-right: 10px;
   font-weight: bold;
 }
@@ -360,7 +345,7 @@
 
 .faq {
   padding: 100px 40px;
-  background: linear-gradient(180deg, #000, #0a0000);
+  background: #000000; /* Fondo negro sólido */
 }
 
 .faq-container {
@@ -369,8 +354,8 @@
 }
 
 .faq-item {
-  background: linear-gradient(135deg, rgba(20, 0, 0, 0.4), rgba(11, 11, 11, 0.6));
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  background: rgba(20, 0, 0, 0.9); /* Rojo oscuro sólido */
+  border: 2px solid var(--gold); /* Borde dorado */
   border-radius: 15px;
   margin-bottom: 20px;
   overflow: hidden;
@@ -378,8 +363,8 @@
 }
 
 .faq-item:hover {
-  border-color: rgba(212, 175, 55, 0.5);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border-color: var(--gold);
+  background: rgba(30, 0, 0, 0.95); /* Rojo más intenso */
 }
 
 .faq-question {
@@ -389,19 +374,20 @@
   justify-content: space-between;
   align-items: center;
   font-weight: 600;
-  color: var(--gold);
+  color: #ffffff; /* Texto blanco */
   font-size: 1.1rem;
   transition: all 0.3s ease;
+  background: rgba(212, 175, 55, 0.05);
 }
 
 .faq-question:hover {
-  background: rgba(212, 175, 55, 0.05);
+  background: rgba(212, 175, 55, 0.1);
 }
 
 .faq-icon {
   font-size: 1.5rem;
   transition: transform 0.3s ease;
-  color: var(--gold);
+  color: var(--gold); /* Icono dorado */
 }
 
 .faq-item.active .faq-icon {
@@ -413,13 +399,15 @@
   overflow: hidden;
   transition: max-height 0.4s ease, padding 0.4s ease;
   padding: 0 30px;
-  color: var(--gray);
+  color: #ffffff; /* Texto blanco */
   line-height: 1.7;
+  opacity: 0.9;
 }
 
 .faq-item.active .faq-answer {
   max-height: 500px;
   padding: 0 30px 25px;
+  background: rgba(11, 11, 11, 0.5);
 }
 
 /* ==============================
@@ -428,9 +416,7 @@
 
 .cta {
   padding: 120px 40px;
-  background: 
-    radial-gradient(circle at center, rgba(212, 175, 55, 0.15), transparent 60%),
-    linear-gradient(135deg, #1a0000, #000);
+  background: #000000; /* Fondo negro sólido */
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -452,26 +438,31 @@
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  background: rgba(20, 0, 0, 0.9); /* Rojo oscuro sólido */
+  padding: 60px;
+  border-radius: 30px;
+  border: 2px solid var(--gold); /* Borde dorado */
 }
 
 .cta h2 {
-  font-size: 3.5rem;
-  color: var(--gold);
+  font-size: 3rem;
+  color: #ffffff; /* Título blanco */
   margin-bottom: 25px;
   font-family: 'Playfair Display', serif;
-  text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
 }
 
 .cta p {
   font-size: 1.3rem;
-  color: #e8e8e8;
+  color: #ffffff; /* Texto blanco */
   margin-bottom: 40px;
   line-height: 1.7;
+  opacity: 0.9;
 }
 
 .cta .btn-gold {
   font-size: 1.2rem;
   padding: 20px 50px;
+  margin-top: 20px;
 }
 
 /* ==============================
@@ -492,6 +483,10 @@
     grid-template-columns: 1fr;
   }
 
+  .gallery-item {
+    height: 300px;
+  }
+
   .testimonial-card {
     padding: 40px 30px;
   }
@@ -504,15 +499,121 @@
     grid-template-columns: 1fr;
   }
 
+  .pricing-card {
+    padding: 40px 30px;
+  }
+
   .pricing-card.featured {
     transform: scale(1);
   }
 
+  .cta-content {
+    padding: 40px 30px;
+  }
+
   .cta h2 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 
   .cta p {
     font-size: 1.1rem;
+  }
+
+  .faq-question {
+    padding: 20px 25px;
+    font-size: 1rem;
+  }
+
+  .faq-answer {
+    padding: 0 25px;
+    font-size: 0.95rem;
+  }
+  
+  .faq-item.active .faq-answer {
+    padding: 0 25px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown-item {
+    min-width: 100px;
+    padding: 20px 25px;
+  }
+
+  .countdown-number {
+    font-size: 2rem;
+  }
+
+  .countdown-label {
+    font-size: 0.8rem;
+  }
+
+  .gallery-item {
+    height: 250px;
+  }
+
+  .gallery-overlay {
+    padding: 20px;
+  }
+
+  .gallery-overlay h3 {
+    font-size: 1.2rem;
+  }
+
+  .pricing-price {
+    font-size: 2.8rem;
+  }
+
+  .pricing-title {
+    font-size: 1.5rem;
+  }
+
+  .cta h2 {
+    font-size: 1.8rem;
+  }
+
+  .cta .btn-gold {
+    font-size: 1rem;
+    padding: 16px 40px;
+  }
+}
+
+/* ==============================
+   COLOR SECTION PARA PANTALLAS GRANDES
+================================ */
+
+@media (min-width: 1200px) {
+  .color-section {
+    padding: 100px 40px;
+    background: var(--red); /* Fondo rojo sólido */
+  }
+
+  .color-section h2,
+  .color-section h3,
+  .color-section h4 {
+    color: #ffffff; /* Títulos blancos */
+  }
+
+  .color-section p,
+  .color-section .section-subtitle {
+    color: #ffffff; /* Texto blanco */
+    opacity: 0.9;
+  }
+
+  .alternate-section {
+    padding: 100px 40px;
+    background: #ffffff; /* Fondo blanco sólido */
+  }
+
+  .alternate-section h2,
+  .alternate-section h3,
+  .alternate-section h4 {
+    color: var(--red); /* Títulos rojos */
+  }
+
+  .alternate-section p,
+  .alternate-section .section-subtitle {
+    color: #000000; /* Texto negro */
+    opacity: 0.9;
   }
 }

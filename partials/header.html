@@ -1,15 +1,245 @@
+<style>
+    :root {
+        --red: #C41E3A;
+        --black: #000000;
+        --white: #FFFFFF;
+        --gray-light: #F5F5F5;
+        --gray-medium: #E0E0E0;
+        --gray-dark: #333333;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .header {
+        background-color: var(--white);
+        border-bottom: 3px solid var(--red);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .header-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 3px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        gap: 10px;
+    }
+
+    .logo img {
+        height: 75px;
+        width: auto;
+        display: block;
+    }
+
+    .logo-text {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--black);
+        letter-spacing: 1px;
+    }
+
+    .logo-text .congress {
+        color: var(--red);
+        font-weight: 400;
+        font-size: 1rem;
+        margin-left: 5px;
+    }
+
+    .nav-menu {
+        display: flex;
+    }
+
+    .nav-list {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .nav-link {
+        text-decoration: none;
+        color: var(--black);
+        font-weight: 500;
+        transition: color 0.3s ease;
+        font-size: 1rem;
+        letter-spacing: 0.3px;
+    }
+
+    .nav-link:hover {
+        color: var(--red);
+    }
+
+    .btn-contact {
+        background-color: var(--red);
+        color: var(--white) !important;
+        padding: 10px 25px;
+        border-radius: 50px;
+        border: 2px solid var(--red);
+        transition: all 0.3s ease;
+        font-weight: 600;
+    }
+
+    .btn-contact:hover {
+        background-color: var(--white);
+        color: var(--red) !important;
+        border-color: var(--red);
+    }
+
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .menu-toggle .bar {
+        width: 100%;
+        height: 3px;
+        background-color: var(--black);
+        transition: all 0.3s ease;
+        border-radius: 3px;
+    }
+
+    .menu-toggle:hover .bar {
+        background-color: var(--red);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .header-container {
+            padding: 12px 20px;
+        }
+
+        .logo img {
+            height: 50px;
+            /* Reducir tamaño en móvil */
+        }
+
+        .logo-text {
+            font-size: 1rem;
+        }
+
+        .logo-text .congress {
+            font-size: 0.9rem;
+        }
+
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: var(--white);
+            border-top: 2px solid var(--red);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .nav-menu.active {
+            display: block;
+        }
+
+        .nav-list {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .nav-link {
+            display: block;
+            text-align: center;
+            padding: 8px 0;
+        }
+
+        .btn-contact {
+            display: inline-block;
+            margin-top: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .menu-toggle {
+            display: flex;
+        }
+    }
+</style>
+
 <header class="header">
-  <div class="logo">
-    <span>Beauty</span> Boss Lash
-  </div>
+    <div class="header-container">
+        <a href="/" class="logo">
+            <img src="/assets/img/logo.png" alt="Beauty Boss Lash">
+            <span class="logo-text">
+                Beauty Boss Lash
+                <hr>
+                <span class="congress"><b>· CONGRESS ·</b></span>
 
-  <nav class="nav">
-    <a href="/index.html">Inicio</a>
-    <a href="/pages/congreso.html">Congreso</a>
-    <a href="/pages/cronograma.html">Cronograma</a>
-    <a href="/pages/nosotros.html">Nosotros</a>
-    <a href="/pages/contacto.html" class="btn-gold">Contacto</a>
-  </nav>
-
-  <div class="menu-toggle" id="menuToggle">☰</div>
+            </span>
+        </a>
+        <nav class="nav-menu" id="navMenu">
+            <ul class="nav-list">
+                <li><a href="/index.html" class="nav-link">Inicio</a></li>
+                <li><a href="/pages/congreso.html" class="nav-link">Congreso</a></li>
+                <li><a href="/pages/cronograma.html" class="nav-link">Cronograma</a></li>
+                <li><a href="/pages/nosotros.html" class="nav-link">Nosotros</a></li>
+                <li><a href="/pages/contacto.html" class="nav-link btn-contact">Contacto</a></li>
+            </ul>
+        </nav>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </div>
 </header>
+
+<script>
+    (function () {
+        function initMobileMenu() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+
+            if (menuToggle && navMenu) {
+                // Eliminar listeners previos (por si se ejecuta múltiples veces)
+                const newMenuToggle = menuToggle.cloneNode(true);
+                menuToggle.parentNode.replaceChild(newMenuToggle, menuToggle);
+                const newNavMenu = navMenu.cloneNode(true);
+                navMenu.parentNode.replaceChild(newNavMenu, navMenu);
+
+                const finalMenuToggle = document.getElementById('menuToggle');
+                const finalNavMenu = document.getElementById('navMenu');
+
+                finalMenuToggle.addEventListener('click', function () {
+                    finalNavMenu.classList.toggle('active');
+                });
+
+                const navLinks = finalNavMenu.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function () {
+                        finalNavMenu.classList.remove('active');
+                    });
+                });
+            }
+        }
+
+        // Ejecutar cuando el DOM esté listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMobileMenu);
+        } else {
+            initMobileMenu();
+        }
+    })();
+</script>

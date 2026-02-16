@@ -1,16 +1,352 @@
+<style>
+    :root {
+        --red: #C41E3A;
+        --black: #000000;
+        --white: #FFFFFF;
+        --gray-light: #F5F5F5;
+        --gray-medium: #E0E0E0;
+        --gray-dark: #333333;
+    }
+
+    .footer {
+        background-color: var(--black);
+        color: var(--white);
+        padding: 60px 30px 30px;
+        margin-top: 80px;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .footer-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+    }
+
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .footer-beauty {
+        color: var(--red);
+    }
+
+    .footer-description {
+        color: #aaa;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    .footer-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.3rem;
+        color: var(--white);
+        margin-bottom: 15px;
+        position: relative;
+        padding-bottom: 10px;
+        cursor: pointer;
+    }
+
+    .footer-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: var(--red);
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+
+    .footer-links a {
+        color: #aaa;
+        text-decoration: none;
+        transition: color 0.3s ease, transform 0.2s ease;
+        display: inline-block;
+    }
+
+    .footer-links a:hover {
+        color: var(--red);
+        transform: translateX(5px);
+    }
+
+    .footer-contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+        color: #aaa;
+    }
+
+    .footer-contact-item i {
+        width: 20px;
+        color: var(--red);
+        font-size: 1.2rem;
+    }
+
+    .footer-contact-item a {
+        color: #aaa;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer-contact-item a:hover {
+        color: var(--red);
+    }
+
+    .footer-social {
+        display: flex;
+        gap: 15px;
+        margin: 20px 0;
+    }
+
+    .social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: #333;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        color: var(--white);
+        font-size: 1.2rem;
+        text-decoration: none;
+    }
+
+    .social-link:hover {
+        background-color: var(--red);
+        transform: translateY(-3px);
+    }
+
+    .btn-whatsapp {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background-color: #25D366;
+        color: var(--white);
+        padding: 12px 25px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        width: fit-content;
+    }
+
+    .btn-whatsapp:hover {
+        background-color: transparent;
+        border-color: #25D366;
+        color: #25D366;
+    }
+
+    .btn-whatsapp i {
+        font-size: 1.2rem;
+    }
+
+    .footer-bottom {
+        grid-column: span 4;
+        text-align: center;
+        color: #777;
+        font-size: 0.9rem;
+        border-top: 1px solid #333;
+        padding-top: 30px;
+        margin-top: 40px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .footer-container {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .footer-bottom {
+            grid-column: span 2;
+        }
+    }
+
+    /* ===== ESTILOS PARA ESCRITORIO (siempre expandido) ===== */
+    @media (min-width: 769px) {
+        .footer-col details {
+            pointer-events: none;
+            /* Evita interacción */
+        }
+
+        .footer-col details summary {
+            pointer-events: none;
+            list-style: none;
+        }
+
+        .footer-col details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .footer-col details summary::after {
+            display: none;
+            /* Oculta flecha personalizada */
+        }
+    }
+
+    /* ===== ESTILOS PARA MÓVIL (acordeón) ===== */
+    @media (max-width: 768px) {
+        .footer {
+            padding: 40px 20px 20px;
+        }
+
+        .footer-container {
+            grid-template-columns: 1fr;
+            gap: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .footer-bottom {
+            grid-column: span 1;
+        }
+
+        /* .footer-title::after {
+      left: 50%;
+      transform: translateX(-50%);
+    } */
+        .footer-col {
+            text-align: center;
+            align-items: center;
+        }
+
+        .footer-contact-item {
+            justify-content: center;
+        }
+
+        .btn-whatsapp {
+            margin: 0 auto;
+        }
+
+        /* Estilos para acordeón en móvil */
+        .footer-col details {
+            width: 100%;
+        }
+
+        .footer-col details summary {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px 0;
+        }
+
+        .footer-col details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .footer-col details summary::after {
+            content: '▼';
+            font-size: 0.8rem;
+            color: var(--red);
+            transition: transform 0.3s ease;
+        }
+
+        .footer-col details[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        .footer-col .footer-title {
+            margin-bottom: 0;
+        }
+
+        .footer-col .footer-links,
+        .footer-col .footer-contact-item {
+            padding-left: 20px;
+            text-align: left;
+        }
+    }
+</style>
+
 <footer class="footer">
-  <div class="footer-top">
-    <h3>Beauty Boss Lash Congress</h3>
-    <p>Donde el arte, la belleza y el espectáculo se encuentran</p>
-  </div>
+    <div class="footer-container">
+        <!-- Columna 1: Logo y descripción (siempre visible) -->
+        <div class="footer-col">
+            <div class="footer-logo">
+                <span class="footer-beauty">Beauty</span> Boss Lash Congress
+            </div>
+            <p class="footer-description">
+                Donde el arte, la belleza y el espectáculo se encuentran. Únete a la experiencia que transforma
+                carreras.
+            </p>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/bblashcontux?igsh=MWJpNGxpbHQwbXBkcA==" class="social-link"
+                    aria-label="Instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
 
-  <div class="footer-links">
-    <a href="#">Instagram</a>
-    <a href="#">Facebook</a>
-    <a href="#">WhatsApp</a>
-  </div>
+                <a href="https://www.facebook.com/share/1AeKqwaDjD/?mibextid=wwXIfr" class="social-link"
+                    aria-label="Facebook" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
 
-  <div class="footer-bottom">
-    © 2026 Beauty Boss Lash · Todos los derechos reservados
-  </div>
+                <a href="https://wa.me/529612048783" class="social-link" aria-label="WhatsApp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Columna 2: Enlaces rápidos (con open en desktop) -->
+        <div class="footer-col">
+            <details open>
+                <summary>
+                    <h4 class="footer-title">Enlaces rápidos</h4>
+                </summary>
+                <ul class="footer-links">
+                    <li><a href="/index.html">Inicio</a></li>
+                    <li><a href="/pages/congreso.html">Congreso</a></li>
+                    <li><a href="/pages/cronograma.html">Cronograma</a></li>
+                    <li><a href="/pages/nosotros.html">Nosotros</a></li>
+                    <li><a href="/pages/contacto.html">Contacto</a></li>
+                </ul>
+            </details>
+        </div>
+
+
+
+        <!-- Columna 4: Contacto directo (con open en desktop) -->
+        <div class="footer-col">
+            <details open>
+                <summary>
+                    <h4 class="footer-title">Contacto</h4>
+                </summary>
+                <div class="footer-contact-item">
+                    <a href="tel:+529612048783">+52 961 204 8783</a>
+                </div>
+            </details>
+        </div>
+
+
+        <!-- Fila inferior -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 Beauty Boss Lash Congress · Todos los derechos reservados</p>
+        </div>
+    </div>
 </footer>

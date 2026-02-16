@@ -3,223 +3,683 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Beauty Boss Lash Congress - Un espectáculo de belleza, arte y poder inspirado en el circo de lujo" />
-  <title>Beauty Boss Lash Congress - Donde la belleza se encuentra con el espectáculo</title>
+  <meta name="description" content="Conoce a las organizadoras del Beauty Boss Lash Congress - Un equipo de mujeres visionarias transformando la industria de la belleza" />
+  <title>Nosotros - Beauty Boss Lash Congress</title>
 
-  <!-- FUENTES -->
+  <!-- FUENTES Y FONT AWESOME -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- FAVICON (Agrega tu logo aquí) -->
-  <!-- <link rel="icon" type="image/png" href="/assets/img/favicon.png"> -->
+  <style>
+    /* ===== RESET Y VARIABLES GLOBALES ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <!-- ESTILOS -->
-  <link rel="stylesheet" href="/css/variables.css">
-  <link rel="stylesheet" href="/css/base.css">
-  <link rel="stylesheet" href="/css/layout.css">
-  <link rel="stylesheet" href="/css/components.css">
-  <link rel="stylesheet" href="/css/pages.css">
+    :root {
+      --red: #C41E3A;
+      --black: #000000;
+      --white: #FFFFFF;
+      --gray-light: #F5F5F5;
+      --gray-medium: #E0E0E0;
+      --gray-dark: #333333;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== LOADER ===== */
+    .loader-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(5px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+      transition: opacity 0.5s ease, visibility 0.5s;
+    }
+    .loader-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .spinner {
+      width: 80px;
+      height: 80px;
+      border: 6px solid rgba(255, 255, 255, 0.2);
+      border-top-color: var(--red);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ===== MODAL (opcional) ===== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-content {
+      background: var(--white);
+      max-width: 600px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      color: var(--gray-dark);
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .modal-close:hover {
+      color: var(--red);
+    }
+
+    /* ===== HERO CON TEXTO SUPERPUESTO ===== */
+    .hero {
+      position: relative;
+      background-image: url('/assets/img/congreso.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    /* ===== BOTONES ===== */
+    .btn {
+      display: inline-block;
+      padding: 14px 35px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .btn-red {
+      background-color: var(--red);
+      color: var(--white);
+    }
+    .btn-red:hover {
+      background-color: var(--white);
+      color: var(--red);
+      border-color: var(--red);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--red);
+      color: var(--red);
+    }
+    .btn-outline:hover {
+      background-color: var(--red);
+      color: var(--white);
+    }
+
+    /* ===== TÍTULOS DE SECCIÓN ===== */
+    .section-title {
+      font-size: 2.8rem;
+      color: var(--black);
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 15px;
+      text-align: center;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--red);
+    }
+
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: var(--gray-dark);
+      max-width: 700px;
+      margin: 0 auto 50px;
+      font-weight: 300;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    /* ===== ICONOS SVG ===== */
+    .icon-svg {
+      width: 48px;
+      height: 48px;
+      fill: var(--red);
+      transition: fill 0.3s ease;
+      display: block;
+      margin: 0 auto 1.5rem;
+    }
+
+    /* ===== TARJETAS ===== */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .value-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2.5rem 1.5rem;
+      border: 1px solid var(--gray-medium);
+      height: 100%;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .value-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--red);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .value-card h3 {
+      color: var(--black);
+      margin: 15px 0;
+    }
+
+    .value-card p {
+      color: var(--gray-dark);
+    }
+
+    /* ===== MISIÓN, VISIÓN, VALORES ===== */
+    .mvv-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      text-align: center;
+      padding: 40px;
+      background: var(--white);
+      border-radius: 20px;
+      border: 1px solid var(--gray-medium);
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .mvv-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--red);
+    }
+
+    .mvv-card h3 {
+      color: var(--black);
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .mvv-card p, .mvv-card span {
+      color: var(--gray-dark);
+    }
+
+    .value-list {
+      text-align: left;
+      padding-left: 20px;
+    }
+
+    .value-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .value-item svg {
+      flex-shrink: 0;
+      margin-top: 3px;
+      stroke: var(--red);
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ===== QUIÉNES SOMOS (grid de 2 columnas) ===== */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    /* ===== CTA FINAL ===== */
+    .cta-card {
+      background: var(--white);
+      padding: 60px 40px;
+      border-radius: 30px;
+      border: 1px solid var(--gray-medium);
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .cta-card h3 {
+      color: var(--red);
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .cta-card p {
+      color: var(--gray-dark);
+      margin-bottom: 30px;
+    }
+
+    /* ===== SECCIÓN PARALLAX ===== */
+    .parallax-section {
+      position: relative;
+      background-image: url('/assets/img/parlax2.jpg');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 100px 0;
+      isolation: isolate;
+    }
+
+    .parallax-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1;
+    }
+
+    .parallax-section .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .parallax-section .section-title,
+    .parallax-section .section-subtitle,
+    .parallax-section .eyebrow {
+      color: var(--white);
+    }
+
+    .parallax-section .section-title::after {
+      background-color: var(--white);
+    }
+
+    .parallax-section .value-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(5px);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero { min-height: 500px; }
+    }
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.5rem; }
+      .hero-description { font-size: 1rem; }
+      .section-title { font-size: 2rem; }
+      .hero { min-height: 400px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .cta-card { padding: 40px 20px; }
+      .cta-card h3 { font-size: 1.5rem; }
+      .parallax-section {
+        background-attachment: scroll;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero { min-height: 300px; }
+      .btn { padding: 12px 25px; }
+      .hero-title { font-size: 2rem; }
+      .section-block {
+        margin: 1rem 0;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <!-- LOADER -->
+  <div class="loader-overlay" id="loader">
+    <div class="spinner"></div>
+  </div>
 
-  <!-- HEADER -->
+  <!-- MODAL (opcional) -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal-content" id="modalContent">
+      <i class="fas fa-times modal-close" id="modalClose"></i>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- CONTENEDOR PARA HEADER -->
   <div id="header"></div>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main class="home">
-
-    <!-- HERO SECTION -->
+  <main>
+    <!-- HERO CON TEXTO SUPERPUESTO -->
     <section class="hero">
       <div class="hero-content">
-        <h1>Beauty Boss Lash Congress</h1>
-        <p>Donde el arte, la belleza y el espectáculo se encuentran 🎪✨</p>
-        <a href="/pages/congreso.html" class="btn-gold">
-          <span>Ver Congreso</span>
-        </a>
+        <h1 class="hero-title">Nosotros</h1>
+        <p class="hero-description">
+          Conoce al equipo que transforma la industria de la belleza a través de educación de excelencia y experiencias únicas.
+        </p>
       </div>
     </section>
 
-    <!-- HIGHLIGHT SECTION -->
-    <section class="highlight">
-      <h2>Un congreso fuera de lo común</h2>
-      <p>
-        Técnicas avanzadas de pestañas, artistas internacionales reconocidos 
-        y una experiencia única inspirada en el circo de lujo. 
-        Prepárate para un evento que transformará tu visión de la industria de la belleza.
-      </p>
+    <!-- QUIÉNES SOMOS -->
+    <section class="container section-block" style="padding: 30px;">
+      <div class="grid-2">
+        <div>
+          <div style="position: relative; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow);">
+            <img src="/assets/img/organizadoras.jpeg" alt="Organizadoras Beauty Boss Lash Congress"
+              style="width: 100%; height: 500px; object-fit: cover;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 30px; 
+                       background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));">
+              <p style="color: var(--white); margin: 0; font-style: italic;">"Transformando la industria, una pestaña a la vez"</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <span class="eyebrow">Nuestra Historia</span>
+          <h2 style="color: var(--black); margin-bottom: 25px; font-size: 2.2rem;">Las Organizadoras</h2>
+          <div style="margin-bottom: 25px; padding-left: 20px; border-left: 3px solid var(--red);">
+            <p style="color: var(--gray-dark); line-height: 1.7; margin-bottom: 15px;">
+              Beauty Boss Lash Congress nace de la pasión por elevar la industria de la belleza
+              y crear un espacio donde el arte, el conocimiento y el espectáculo se fusionan.
+            </p>
+            <p style="color: var(--gray-dark); line-height: 1.7;">
+              Somos un equipo de mujeres visionarias comprometidas con impulsar a lash artists
+              y profesionales de la belleza a través de educación de alto nivel,
+              experiencias únicas y conexiones reales.
+            </p>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 30px 0;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 8px; height: 8px; background: var(--red); border-radius: 50%;"></div>
+              <span style="color: var(--gray-dark);">Liderazgo Femenino</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 8px; height: 8px; background: var(--red); border-radius: 50%;"></div>
+              <span style="color: var(--gray-dark);">Innovación Constante</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 8px; height: 8px; background: var(--red); border-radius: 50%;"></div>
+              <span style="color: var(--gray-dark);">Excelencia Profesional</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 8px; height: 8px; background: var(--red); border-radius: 50%;"></div>
+              <span style="color: var(--gray-dark);">Comunidad Global</span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap; justify-content: flex-start;">
+            <a href="/pages/cronograma.html" class="btn btn-red">Ver Cronograma</a>
+            <a href="/pages/contacto.html" class="btn btn-outline">Contactar</a>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- FEATURES SECTION -->
-    <section class="section">
+    <!-- LO QUE ENCONTRARÁS (con parallax) -->
+    <section class="parallax-section">
       <div class="container">
-        <h2 class="section-title">¿Qué te espera?</h2>
-        <p class="section-subtitle">
-          Una experiencia inolvidable que combina educación de clase mundial 
-          con entretenimiento espectacular
-        </p>
+        <div class="text-center" style="margin-bottom: 60px;">
+          <span class="eyebrow">En Nuestro Congreso</span>
+          <h2 class="section-title">¿Qué Encontrarás?</h2>
+          <p class="section-subtitle">
+            Una experiencia diseñada meticulosamente para tu crecimiento profesional y personal
+          </p>
+        </div>
 
         <div class="grid">
-          <div class="card">
-            <h3>Técnicas Avanzadas</h3>
-            <p>
-              Aprende las últimas técnicas de extensiones de pestañas, 
-              levantamiento de pestañas y diseño de cejas con los mejores 
-              expertos internacionales.
-            </p>
+          <!-- Educación de Primer Nivel -->
+          <div class="value-card">
+            <svg class="icon-svg" viewBox="0 0 24 24">
+              <path d="M12 2L2 7v10l10 5 10-5V7l-10-5zm0 2.3L19 8.5v7l-7 3.5-7-3.5v-7l7-3.5zM11 10h2v5h-2v-5zm0-2h2v2h-2V8z"/>
+            </svg>
+            <h3>Educación de Primer Nivel</h3>
+            <p>Ponencias magistrales con expertos internacionales, técnicas innovadoras y conocimiento práctico aplicable desde el primer día.</p>
           </div>
 
-          <div class="card">
-            <h3>Experiencia Única</h3>
-            <p>
-              Inspirado en el circo de lujo, cada momento está diseñado 
-              para sorprenderte y inspirarte con presentaciones teatrales 
-              y demostraciones en vivo.
-            </p>
+          <!-- Experiencia Inmersiva -->
+          <div class="value-card">
+            <svg class="icon-svg" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 10h2v5h-2v-5zm0-2h2v2h-2V8z"/>
+            </svg>
+            <h3>Experiencia Inmersiva</h3>
+            <p>Inspirado en el circo de lujo, cada detalle está diseñado para sorprenderte. Shows en vivo, decoración temática y momentos mágicos.</p>
           </div>
 
-          <div class="card">
-            <h3>Networking</h3>
-            <p>
-              Conecta con profesionales de toda Latinoamérica, 
-              comparte experiencias y crea alianzas que impulsarán 
-              tu negocio al siguiente nivel.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Certificación</h3>
-            <p>
-              Recibe certificados oficiales que avalan tu participación 
-              y las nuevas habilidades adquiridas durante el congreso.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Expo Comercial</h3>
-            <p>
-              Conoce las últimas innovaciones en productos y herramientas 
-              para tu negocio con descuentos exclusivos para asistentes.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Shows en Vivo</h3>
-            <p>
-              Disfruta de presentaciones artísticas, desfiles de moda 
-              y espectáculos que celebran la belleza y la creatividad.
-            </p>
+          <!-- Innovación Constante -->
+          <div class="value-card">
+            <svg class="icon-svg" viewBox="0 0 24 24">
+              <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V17h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-1 .05 1.16.38 2 1.06 2 1.95V17h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+            </svg>
+            <h3>Innovación Constante</h3>
+            <p>Sé de los primeros en conocer las últimas tendencias, técnicas revolucionarias y productos innovadores de la industria.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- DIVIDER -->
-    <div class="divider"></div>
-
-    <!-- EMBAJADORES SECTION -->
-    <section class="section" style="background: linear-gradient(180deg, #000, #0a0000);">
-      <div class="container">
-        <h2 class="section-title">Embajadores</h2>
+    <!-- NUESTRA MISIÓN Y VISIÓN -->
+    <section class="container section-block" style="padding: 30px;">
+      <div class="text-center" style="margin-bottom: 60px;">
+        <h2 class="section-title">Nuestro Compromiso</h2>
         <p class="section-subtitle">
-          Reconocidos profesionales que lideran el congreso
+          Los principios que guían cada decisión y acción en Beauty Boss Lash Congress
         </p>
+      </div>
 
-        <div class="team-grid">
-          <div class="team-member">
-            <div class="img-hover">
-              <img src="/assets/img/yazmin.jpg" alt="Yazmin" />
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;">
+        <!-- MISIÓN -->
+        <div class="mvv-card">
+          <svg class="icon-svg" viewBox="0 0 24 24">
+            <path d="M12 2L2 7v10l10 5 10-5V7l-10-5zm0 2.3L19 8.5v7l-7 3.5-7-3.5v-7l7-3.5zM11 10h2v5h-2v-5zm0-2h2v2h-2V8z"/>
+          </svg>
+          <h3>Nuestra Misión</h3>
+          <p>
+            Transformar la industria de la belleza a través de educación de excelencia,
+            experiencias únicas y empoderamiento profesional, creando una comunidad global
+            de lash artists comprometidos con la calidad y la innovación.
+          </p>
+        </div>
+
+        <!-- VISIÓN -->
+        <div class="mvv-card">
+          <svg class="icon-svg" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 10h2v5h-2v-5zm0-2h2v2h-2V8z"/>
+          </svg>
+          <h3>Nuestra Visión</h3>
+          <p>
+            Ser el congreso de referencia en Latinoamérica para profesionales de la belleza,
+            reconocido por su excelencia educativa, experiencias memorables y capacidad
+            para impulsar el crecimiento y la innovación en la industria.
+          </p>
+        </div>
+
+        <!-- VALORES -->
+        <div class="mvv-card">
+          <svg class="icon-svg" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          </svg>
+          <h3>Nuestros Valores</h3>
+          <div class="value-list">
+            <div class="value-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Excelencia en cada detalle</span>
             </div>
-            <h3>Yazmin</h3>
-            <p>Embajadora Principal</p>
+            <div class="value-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Innovación constante</span>
+            </div>
+            <div class="value-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Comunidad y colaboración</span>
+            </div>
+            <div class="value-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Empoderamiento femenino</span>
+            </div>
+            <div class="value-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Integridad y transparencia</span>
+            </div>
+            <div class="value-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Pasión por la belleza</span>
+            </div>
           </div>
+        </div>
+      </div>
 
-          <div class="team-member">
-            <div class="img-hover">
-              <img src="/assets/img/liz.jpg" alt="Liz Gonzalez" />
-            </div>
-            <h3>Liz Gonzalez</h3>
-            <p>Especialista en Técnicas Avanzadas</p>
-          </div>
-
-          <div class="team-member">
-            <div class="img-hover">
-              <img src="/assets/img/manuel.jpg" alt="Manuel Viana" />
-            </div>
-            <h3>Manuel Viana</h3>
-            <p>Experto en Diseño y Estética</p>
-          </div>
-
-          <div class="team-member">
-            <div class="img-hover">
-              <img src="/assets/img/leslie.jpg" alt="Leslie Von Flores" />
-            </div>
-            <h3>Leslie Von Flores</h3>
-            <p>Maestra de Volumen</p>
-          </div>
-
-          <div class="team-member">
-            <div class="img-hover">
-              <img src="/assets/img/edgar.jpg" alt="Edgar" />
-            </div>
-            <h3>Edgar</h3>
-            <p>Invitado Especial</p>
+      <!-- CTA FINAL -->
+      <div class="text-center" style="margin-top: 80px;">
+        <div class="cta-card">
+          <svg class="icon-svg" style="width: 60px; height: 60px;" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM7 10h5v2H7v-2zm0 4h5v2H7v-2z"/>
+          </svg>
+          <h3>¿Lista para Unirte a Nosotras?</h3>
+          <p>
+            Sé parte de esta comunidad extraordinaria y transforma tu carrera
+            profesional en el evento más esperado del año.
+          </p>
+          <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <a href="/pages/congreso.html" class="btn btn-red">Ver Congreso</a>
+            <a href="/pages/contacto.html" class="btn btn-outline">Contáctanos</a>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- DIVIDER -->
-    <div class="divider"></div>
-
-    <!-- INFO DEL EVENTO -->
-    <section class="section">
-      <div class="container text-center">
-        <h2 class="section-title">Información del Evento</h2>
-        
-        <div class="grid" style="margin-top: 60px; max-width: 900px; margin-left: auto; margin-right: auto;">
-          <div class="card">
-            <h3>Fecha</h3>
-            <p style="color: var(--white); font-size: 1.2rem; font-weight: 600;">
-              17 de Octubre, 2026
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Ubicación</h3>
-            <p style="color: var(--white); font-size: 1.2rem; font-weight: 600;">
-              Tuxtla Gutiérrez, Chiapas
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Edición</h3>
-            <p style="color: var(--white); font-size: 1.2rem; font-weight: 600;">
-              1ª Edición BBLC
-            </p>
-          </div>
-        </div>
-
-        <div style="margin-top: 60px;">
-          <a href="/pages/contacto.html" class="btn-gold" style="margin-right: 20px;">
-            <span>Contactar</span>
-          </a>
-          <a href="/pages/congreso.html" class="btn-red">
-            <span>Más Información</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
   </main>
 
-  <!-- FOOTER -->
+  <!-- CONTENEDOR PARA FOOTER -->
   <div id="footer"></div>
 
-  <!-- SCRIPTS -->
+  <!-- Script para cargar header y footer -->
   <script src="/js/include.js"></script>
-  <script src="/js/main.js"></script>
+  <script>
+    // Ocultar loader cuando todo esté cargado
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        document.getElementById('loader').classList.add('hidden');
+      }, 500);
+    });
 
+    // Código del modal (opcional, por si se necesita)
+    const modal = document.getElementById('modal');
+    const modalClose = document.getElementById('modalClose');
+    if (modalClose) {
+      modalClose.addEventListener('click', function() {
+        modal.classList.remove('active');
+      });
+    }
+    window.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 </html>

@@ -1,7 +1,12 @@
 :root {
-  --black: #0b0b0b;
-  --red: #8b0000;
-  --gold: #d4af37;
-  --white: #ffffff;
-  --gray: #b5b5b5;
+  --black: #000000;        /* Cambiado a negro puro */
+  --red: #8b0000;          /* Rojo oscuro */
+  --gold: #d4af37;         /* Dorado */
+  --white: #ffffff;        /* Blanco puro */
+  --gray: #cccccc;         /* Gris más claro para mejor legibilidad */
+  
+  /* Nuevas variables para consistencia */
+  --dark-red: #1a0000;     /* Rojo muy oscuro para fondos */
+  --light-gold: #e6b800;   /* Dorado más claro para hover */
+  --light-red: #b30000;    /* Rojo más claro para hover */
 }

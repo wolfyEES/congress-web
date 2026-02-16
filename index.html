@@ -1,56 +1,1204 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beauty Boss Lash Congress</title>
 
-  <!-- FUENTES -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beauty Boss Lash Congress 2026 | Primera Edición</title>
+  <!-- Fuentes y Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <!-- ESTILOS (RUTAS ABSOLUTAS) -->
-  <link rel="stylesheet" href="/css/variables.css">
-  <link rel="stylesheet" href="/css/base.css">
-  <link rel="stylesheet" href="/css/layout.css">
-  <link rel="stylesheet" href="/css/components.css">
-  <link rel="stylesheet" href="/css/pages.css">
+    :root {
+      --red: #C41E3A;
+      --black: #000000;
+      --white: #FFFFFF;
+      --gray-light: #F5F5F5;
+      --gray-medium: #E0E0E0;
+      --gray-dark: #333333;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== LOADER ===== */
+    .loader-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(5px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+      transition: opacity 0.5s ease, visibility 0.5s;
+    }
+
+    .loader-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .spinner {
+      width: 80px;
+      height: 80px;
+      border: 6px solid rgba(255, 255, 255, 0.2);
+      border-top-color: var(--red);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: var(--white);
+      max-width: 600px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      color: var(--gray-dark);
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .modal-close:hover {
+      color: var(--red);
+    }
+
+    .modal-title {
+      font-size: 2rem;
+      color: var(--red);
+      margin-bottom: 20px;
+      padding-right: 30px;
+    }
+
+    .modal-section {
+      margin-bottom: 25px;
+    }
+
+    .modal-section h4 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: var(--black);
+      border-bottom: 2px solid var(--gray-medium);
+      padding-bottom: 5px;
+    }
+
+    .modal-section ul {
+      list-style: none;
+    }
+
+    .modal-section li {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .modal-section li i {
+      width: 24px;
+      color: var(--red);
+      font-size: 1.1rem;
+    }
+
+    .modal-price {
+      font-size: 1.5rem;
+      color: var(--red);
+      font-weight: 700;
+      margin: 15px 0;
+    }
+
+    .modal-btn {
+      display: inline-block;
+      background: #25D366;
+      color: var(--white);
+      padding: 14px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+      margin-top: 20px;
+    }
+
+    .modal-btn:hover {
+      background: transparent;
+      border-color: #25D366;
+      color: #25D366;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      background-image: url('/assets/img/portada-index.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-title span {
+      color: var(--red);
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .hero-info {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 30px;
+      font-size: 1.2rem;
+    }
+
+    .hero-info-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-info-item svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--red);
+    }
+
+    .btn-hero {
+      background-color: var(--red);
+      color: var(--white);
+      padding: 16px 40px;
+      font-size: 1.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      transition: all 0.3s ease;
+      border: 2px solid var(--red);
+    }
+
+    .btn-hero:hover {
+      background-color: var(--white);
+      color: var(--red);
+      border-color: var(--red);
+    }
+
+    /* ===== BOTONES ===== */
+    .btn {
+      display: inline-block;
+      padding: 14px 35px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .btn-red {
+      background-color: var(--red);
+      color: var(--white);
+    }
+
+    .btn-red:hover {
+      background-color: var(--white);
+      color: var(--red);
+      border-color: var(--red);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--red);
+      color: var(--red);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--red);
+      color: var(--white);
+    }
+
+    /* ===== TÍTULOS DE SECCIÓN ===== */
+    .section-title {
+      font-size: 2.8rem;
+      color: var(--black);
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 15px;
+      text-align: center;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--red);
+    }
+
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: var(--gray-dark);
+      max-width: 700px;
+      margin: 0 auto 50px;
+      font-weight: 300;
+      text-align: center;
+    }
+
+    /* ===== TARJETAS (ESTILO ORIGINAL RESTAURADO) ===== */
+    .card {
+      background-color: var(--white);
+      border: 1px solid var(--gray-medium);
+      border-radius: 16px;
+      padding: 2.5rem 1.5rem;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      border-color: var(--red);
+    }
+
+    .card h3 {
+      font-size: 1.8rem;
+      color: var(--black);
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      color: var(--gray-dark);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .card .icon-svg {
+      margin: 0 auto 1.5rem;
+      display: block;
+      width: 48px;
+      height: 48px;
+      fill: var(--red);
+      transition: fill 0.3s ease;
+    }
+
+    .card:hover .icon-svg {
+      fill: var(--black);
+    }
+
+    /* ===== SECCIÓN GRADIENTE ===== */
+    .gradient-section {
+      background: linear-gradient(135deg, var(--red) 0%, var(--white) 100%);
+      padding: 80px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gradient-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
+      animation: rotate 30s linear infinite;
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .gradient-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .gradient-content h2 {
+      font-size: 2.8rem;
+      color: var(--white);
+      margin-bottom: 20px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .gradient-content p {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.95);
+      margin-bottom: 30px;
+      line-height: 1.8;
+    }
+
+    /* ===== SECCIÓN ZONAS (con iconos y modal) ===== */
+    .zones-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .zone-card {
+      background-color: var(--white);
+      border: 2px solid var(--gray-medium);
+      border-radius: 20px;
+      padding: 30px 15px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .zone-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--red);
+    }
+
+    .zone-card.sold-out {
+      opacity: 0.8;
+      border-color: var(--red);
+      overflow: hidden;
+    }
+
+    .zone-card.sold-out::after {
+      content: "SOLD OUT";
+      position: absolute;
+      top: 10px;
+      right: -25px;
+      background-color: var(--red);
+      color: var(--white);
+      padding: 5px 15px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transform: rotate(45deg);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .zone-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+
+    .zone-name i {
+      margin-right: 5px;
+      color: var(--red);
+    }
+
+    .zone-preview {
+      font-size: 0.9rem;
+      color: var(--gray-dark);
+      margin: 10px 0;
+    }
+
+    .zone-preview i {
+      color: var(--red);
+      margin-right: 5px;
+    }
+
+    .btn-zone-details {
+      background-color: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 15px;
+    }
+
+    .btn-zone-details:hover {
+      background-color: var(--black);
+    }
+
+    /* ===== SECCIÓN AGENDA ===== */
+    .agenda-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .agenda-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .agenda-item {
+      background-color: var(--white);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      border-left: 4px solid var(--red);
+      transition: transform 0.3s ease;
+    }
+
+    .agenda-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 8px 25px rgba(196, 30, 58, 0.1);
+    }
+
+    .agenda-time {
+      color: var(--red);
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+
+    .agenda-item h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: var(--black);
+    }
+
+    .agenda-item p {
+      color: var(--gray-dark);
+      font-size: 0.95rem;
+    }
+
+    .agenda-image {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      height: 400px;
+    }
+
+    .agenda-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .agenda-image:hover img {
+      transform: scale(1.05);
+    }
+
+    /* ===== MAPA ===== */
+    .map-container {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--gray-medium);
+      height: 450px;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ===== GRIDS ===== */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    /* ===== RESPONSIVE (con ajustes mínimos para cards) ===== */
+    @media (max-width: 1024px) {
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero {
+        min-height: 500px;
+      }
+
+      .agenda-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .agenda-image {
+        height: 300px;
+        order: -1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-description {
+        font-size: 1rem;
+      }
+
+      .hero-info {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .gradient-content h2 {
+        font-size: 2rem;
+      }
+
+      .gradient-content p {
+        font-size: 1.1rem;
+      }
+
+      .map-container {
+        height: 300px;
+      }
+
+      .zones-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .header {
+        margin-top: 0;
+        padding-top: 0;
+      }
+
+      .hero-content {
+        padding: 10px;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-info-item {
+        font-size: 1rem;
+      }
+
+      .btn-hero {
+        padding: 12px 30px;
+        font-size: 1rem;
+      }
+
+      .container {
+        padding: 0 16px;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+        padding: 0 10px;
+      }
+
+      .section-subtitle {
+        font-size: 1rem;
+        padding: 0 15px;
+        margin-bottom: 30px;
+      }
+
+      /* Cards mantienen estilo original con ligera reducción de padding para móvil */
+      .card {
+        padding: 2rem 1rem;
+      }
+
+      .card h3 {
+        font-size: 1.6rem;
+      }
+
+      .card p {
+        font-size: 0.9rem;
+      }
+
+      .grid-2 {
+        gap: 30px;
+      }
+
+      .grid-2 h3 {
+        font-size: 1.5rem !important;
+        text-align: center;
+      }
+
+      .grid-2>div:last-child {
+        padding: 0 10px;
+      }
+
+      .grid-2 div[style*="margin-top: 30px"] {
+        padding: 15px !important;
+      }
+
+      p {
+        padding: 0 5px;
+      }
+
+      .section-block {
+        margin: 1rem 0;
+      }
+
+      .zones-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .agenda-image {
+        height: 250px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- LOADER -->
+  <div class="loader-overlay" id="loader">
+    <div class="spinner"></div>
+  </div>
 
-  <!-- HEADER -->
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal-content" id="modalContent">
+      <i class="fas fa-times modal-close" id="modalClose"></i>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
   <div id="header"></div>
 
-  <!-- CONTENIDO PRINCIPAL -->
- <main class="home">
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span>Beauty</span> Boss Lash<br>CONGRESS
+        </h1>
+        <p class="hero-description">
+          Congreso internacional de pestañas y marketing en México
+        </p>
+        <div class="hero-info">
+          <div class="hero-info-item">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z" />
+            </svg>
+            <span>17 Octubre 2026</span>
+          </div>
+          <div class="hero-info-item">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+            </svg>
+            <span>Tuxtla Gutiérrez</span>
+          </div>
+        </div>
+        <a href="https://wa.me/529612048783?text=Hola%2C%20quiero%20comprar%20boletos%20para%20Beauty%20Boss%20Lash%20Congress%202026"
+          class="btn-hero" target="_blank">
+          Comprar Boletos
+        </a>
+      </div>
+    </section>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Beauty Boss Lash Congress</h1>
-      <p>Un espectáculo de belleza, arte y poder</p>
-      <a href="/pages/congreso.html" class="btn-gold">Ver Congreso</a>
-    </div>
-  </section>
+    <!-- SECCIÓN: EL CONGRESO (cards originales) -->
+    <section class="container section-block" style="padding: 30px;">
+      <div class="text-center">
+        <h2 class="section-title">Una Experiencia Transformadora</h2>
+        <p class="section-subtitle">
+          Beauty Boss Lash Congress es el encuentro más exclusivo para profesionales de la belleza,
+          donde la educación de élite se fusiona con una experiencia sensorial inspirada en el circo de lujo.
+        </p>
+      </div>
 
-  <section class="highlight">
-    <h2>Un congreso fuera de lo común</h2>
-    <p>
-      Técnicas de pestañas, artistas internacionales y una experiencia
-      inspirada en el circo de lujo.
-    </p>
-  </section>
-
-</main>
+      <div class="grid-3">
+        <!-- Tarjeta 1 -->
+        <div class="card">
+          <svg class="icon-svg" viewBox="0 0 24 24">
+  <path d="M18 2H6v3H3v3c0 3.31 2.69 6 6 6 .7 1.19 1.98 2 3.5 2s2.8-.81 3.5-2c3.31 0 6-2.69 6-6V5h-3V2zm-2 2v3c0 2.21-1.79 4-4 4s-4-1.79-4-4V4h8zM5 8V7h1v1c0 .7.11 1.37.3 2H6c-.55 0-1-.45-1-1zm14 0c0 .55-.45 1-1 1h-.3c.19-.63.3-1.3.3-2V7h1v1zm-7 8c-1.1 0-2-.9-2-2h4c0 1.1-.9 2-2 2zm-3 2h6v2H9v-2z"/>
+</svg>
 
 
-  <!-- FOOTER -->
+          <h3>Educación de Alto Nivel</h3>
+          <p>Ponentes internacionales compartirán técnicas avanzadas, tendencias y estrategias de negocio para elevar tu
+            práctica profesional.</p>
+        </div>
+        <!-- Tarjeta 2 -->
+        <div class="card">
+          <svg class="icon-svg" viewBox="0 0 24 24">
+  <path d="M5 16L3 6l5 3 4-5 4 5 5-3-2 10H5zm0 2h14v2H5v-2z"/>
+</svg>
+
+          <h3>Experiencia Premium</h3>
+          <p>Ambientación teatral, shows en vivo y atención personalizada en un espacio diseñado para inspirar y
+            sorprender.</p>
+        </div>
+        <!-- Tarjeta 3 -->
+        <div class="card">
+          <svg class="icon-svg" viewBox="0 0 24 24">
+            <path
+              d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V17h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-1 .05 1.16.38 2 1.06 2 1.95V17h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+          </svg>
+          <h3>Networking Exclusivo</h3>
+          <p>Conecta con los líderes de la industria y construye relaciones valiosas en un entorno diseñado para el
+            crecimiento profesional.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN VIBRANTE CON GRADIENTE -->
+    <section class="gradient-section">
+      <div class="gradient-content">
+        <svg class="icon-svg" style="width: 80px; height: 80px; fill: white; margin-bottom: 20px;" viewBox="0 0 24 24">
+          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+        </svg>
+        <h2>Vive la magia</h2>
+        <p>Un día lleno de aprendizaje, espectáculo y conexiones que transformarán tu carrera. Prepárate para una
+          experiencia sensorial única en el corazón de Chiapas.</p>
+        <div style="display: flex; justify-content: center; align-items: center; margin-top: 50px;">
+          <a href="/pages/cronograma.html" class="btn btn-outline"
+            style="color: var(--white); border: 2px solid var(--white);">
+            Ver programa
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: ZONAS DEL EVENTO (con preview y modal) -->
+    <section class="container section-block" style="padding: 30px;">
+      <div class="text-center">
+        <h2 class="section-title">Zonas del Evento</h2>
+        <p class="section-subtitle">Elige la zona que mejor se adapte a tu experiencia</p>
+      </div>
+
+      <div class="zones-grid" id="zonesContainer">
+        <!-- Diamante -->
+        <div class="zone-card sold-out" data-zona="diamante">
+          <div class="zone-name"><i class="fas fa-gem"></i> Zona Diamante</div>
+          <div class="zone-preview">
+            <i class="fas fa-check-circle"></i> Primeras mesas, kit vip, desayuno, comida...
+          </div>
+          <button class="btn-zone-details">Ver detalles</button>
+        </div>
+        <!-- Oro -->
+        <div class="zone-card" data-zona="oro">
+          <div class="zone-name"><i class="fas fa-crown"></i> Zona Oro</div>
+          <div class="zone-preview">
+            <i class="fas fa-check-circle"></i> Segundas mesas, kit vip, comida, reconocimiento...
+          </div>
+          <button class="btn-zone-details">Ver detalles</button>
+        </div>
+        <!-- Platinum -->
+        <div class="zone-card" data-zona="platinum">
+          <div class="zone-name"><i class="fas fa-star"></i> Zona Platinum</div>
+          <div class="zone-preview">
+            <i class="fas fa-check-circle"></i> Acceso, comida, reconocimiento, graduación...
+          </div>
+          <button class="btn-zone-details">Ver detalles</button>
+        </div>
+        <!-- General -->
+        <div class="zone-card" data-zona="general">
+          <div class="zone-name"><i class="fas fa-users"></i> Zona General</div>
+          <div class="zone-preview">
+            <i class="fas fa-check-circle"></i> Acceso, comida, reconocimiento, graduación...
+          </div>
+          <button class="btn-zone-details">Ver detalles</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: AGENDA -->
+    <section class="container section-block" style="padding: 30px;">
+      <div class="text-center">
+        <h2 class="section-title">Agenda del Evento</h2>
+        <p class="section-subtitle">Un día diseñado para maximizar tu aprendizaje y experiencia</p>
+      </div>
+
+      <div class="agenda-grid">
+        <div class="agenda-list">
+          <div class="agenda-item">
+            <div class="agenda-time">10:30 AM</div>
+            <h3>Registro y Bienvenida</h3>
+            <p>Inicio del evento con entrega de materiales y networking inicial.</p>
+          </div>
+          <div class="agenda-item">
+            <div class="agenda-time">11:30 AM - 4:00 PM</div>
+            <h3>Ponencias Magistrales</h3>
+            <p>Sesiones continuas con expertos, breaks estratégicos y demostraciones en vivo.</p>
+          </div>
+          <div class="agenda-item">
+            <div class="agenda-time">4:00 PM</div>
+            <h3>Clausura y Certificación</h3>
+            <p>Entrega de diplomas y cierre espectacular del evento.</p>
+          </div>
+        </div>
+        <div class="agenda-image">
+          <img src="/assets/img/evento.jpeg" alt="Evento de belleza" loading="lazy">
+        </div>
+      </div>
+      <div style="display: flex; justify-content: center; margin-top: 40px;">
+        <a href="/pages/cronograma.html" class="btn btn-outline">Ver cronograma completo</a>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: EXPERIENCIA BBLC (cards originales) -->
+    <section class="container section-block" style="padding: 30px;">
+      <div class="text-center">
+        <h2 class="section-title">La Experiencia BBLC</h2>
+        <p class="section-subtitle">Más que un congreso, una transformación profesional y personal</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <svg class="icon-svg" viewBox="0 0 24 24">
+            <path
+              d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM7 10h5v2H7v-2zm0 4h5v2H7v-2z" />
+          </svg>
+          <h3>Aprendizaje Práctico</h3>
+          <p>Técnicas demostradas en vivo con modelos reales para una comprensión completa.</p>
+        </div>
+        <div class="card">
+          <svg class="icon-svg" viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2V7zm0 8h2v2h-2v-2z" />
+          </svg>
+          <h3>Ambiente Inspirador</h3>
+          <p>Diseño escénico, iluminación teatral y detalles que estimulan la creatividad.</p>
+        </div>
+        <div class="card">
+          <svg class="icon-svg" viewBox="0 0 24 24">
+            <path d="M12 2L1 21h22L12 2zm0 4.2L19.5 19h-15L12 6.2zM13 16h-2v2h2v-2zm0-6h-2v4h2v-4z" />
+          </svg>
+          <h3>Certificación Oficial</h3>
+          <p>Diploma que acredita tu participación y las competencias desarrolladas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: UBICACIÓN -->
+    <section class="container section-block" style="padding: 30px;">
+      <div class="text-center">
+        <h2 class="section-title">Ubicación Exclusiva</h2>
+        <p class="section-subtitle">Un recinto diseñado para inspirar y conectar</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15281.054947889028!2d-93.1284169!3d16.7635492!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ecd896aff387bb%3A0x872024f17d5a25db!2sFestare%20Espacios%20para%20eventos!5e0!3m2!1ses-419!2smx!4v1771277129729!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div>
+          <h3 style="color: var(--red); font-size: 1.8rem; margin-bottom: 20px;">Un Espacio para la Excelencia</h3>
+          <p style="margin-bottom: 30px;">Hemos seleccionado cuidadosamente un recinto que combina elegancia,
+            funcionalidad y comodidad para garantizar una experiencia inmersiva.</p>
+
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: flex; gap: 15px;">
+              <svg class="icon-svg" style="width: 28px; height: 28px; fill: var(--red);" viewBox="0 0 24 24">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+              <div>
+                <h4 style="font-weight: 600;">Acceso Privilegiado</h4>
+                <p>Ubicación central con fácil acceso.</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 15px;">
+              <svg class="icon-svg" style="width: 28px; height: 28px; fill: var(--red);" viewBox="0 0 24 24">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+              </svg>
+              <div>
+                <h4 style="font-weight: 600;">Infraestructura Premium</h4>
+                <p>Sonido e iluminación profesional.</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 30px; background-color: var(--gray-light); padding: 20px; border-radius: 10px;">
+            <p><strong style="color: var(--red);">IMPORTANTE:</strong> Acceso restringido a participantes registrados.
+              Llegar con 30 minutos de anticipación.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <div id="footer"></div>
 
-  <!-- SCRIPTS -->
   <script src="/js/include.js"></script>
-  <script src="/js/main.js"></script>
+  <script>
+    // Ocultar loader cuando todo esté cargado
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        document.getElementById('loader').classList.add('hidden');
+      }, 500);
+    });
 
+    // Datos de las zonas
+    const zonasData = {
+      diamante: {
+        nombre: 'Zona Diamante',
+        icono: 'fa-gem',
+        precio: '$5,800',
+        precioOriginal: '$6,500',
+        reserva: '$600',
+        incluye: [
+          'Primeras mesas',
+          'Lugar personalizado',
+          'Bolsa personalizada',
+          'Acceso al evento y todas las ponencias',
+          'Transporte al lugar del evento',
+          'Gafete de ingreso',
+          'Desayuno antes de iniciar el evento',
+          'Kit vip de bienvenida',
+          'Foto profesional día del evento',
+          'Cóctel de bienvenida',
+          'Snack de bienvenida',
+          'Vaso personalizado',
+          'Comida',
+          'Reconocimiento acrílico',
+          'Graduación'
+        ],
+        disponibilidad: '',
+        soldOut: true
+      },
+      oro: {
+        nombre: 'Zona Oro',
+        icono: 'fa-crown',
+        precio: '$4,800',
+        precioOriginal: '$5,500',
+        reserva: '$500',
+        incluye: [
+          'Lugares también reservado (segundas y terceras mesas)',
+          'Acceso al evento y todas las ponencias',
+          'Vaso personalizado',
+          'Gafete de ingreso',
+          'Kit vip de bienvenida',
+          'Cóctel de bienvenida',
+          'Bolsa personalizada',
+          'Comida',
+          'Reconocimiento acrílico',
+          'Graduación'
+        ],
+        disponibilidad: ''
+      },
+      platinum: {
+        nombre: 'Zona Platinum',
+        icono: 'fa-star',
+        precio: '$3,700',
+        precioOriginal: '$4,000',
+        reserva: '$400',
+        incluye: [
+          'Acceso al evento y todas las ponencias',
+          'Brazalete de ingreso',
+          'Kit vip de bienvenida',
+          'Comida',
+          'Reconocimiento acrílico',
+          'Graduación'
+        ],
+        disponibilidad: ''
+      },
+      general: {
+        nombre: 'Zona General',
+        icono: 'fa-users',
+        precio: '$2,500',
+        precioOriginal: '$3,000',
+        reserva: '$400',
+        incluye: [
+          'Acceso al evento y todas las ponencias',
+          'Comida',
+          'Reconocimiento acrílico',
+          'Graduación'
+        ],
+        disponibilidad: ''
+      }
+    };
+
+    const modal = document.getElementById('modal');
+    const modalBody = document.getElementById('modalBody');
+    const modalClose = document.getElementById('modalClose');
+
+    document.querySelectorAll('.btn-zone-details').forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const zoneCard = this.closest('.zone-card');
+        const zona = zoneCard.dataset.zona;
+        mostrarModal(zona);
+      });
+    });
+
+    function cerrarModal() {
+      modal.classList.remove('active');
+    }
+    modalClose.addEventListener('click', cerrarModal);
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) cerrarModal();
+    });
+
+    function mostrarModal(zona) {
+      const data = zonasData[zona];
+      if (!data) return;
+
+      const incluyeHTML = data.incluye.map(item => `<li><i class="fas fa-check-circle" style="color: var(--red);"></i> ${item}</li>`).join('');
+
+      const html = `
+        <h2 class="modal-title"><i class="fas ${data.icono}"></i> ${data.nombre}</h2>
+        <div class="modal-section">
+          <h4>Precio</h4>
+          <div class="modal-price">${data.precio} <span style="font-size: 1rem; color: var(--gray-dark); text-decoration: line-through;">${data.precioOriginal}</span></div>
+          <p><strong>Reserva:</strong> $${data.reserva}</p>
+        </div>
+        <div class="modal-section">
+          <h4>Incluye</h4>
+          <ul>${incluyeHTML}</ul>
+        </div>
+        <div class="modal-section">
+          <h4>Disponibilidad</h4>
+          <p>${data.disponibilidad}</p>
+          <p style="margin-top: 10px;"><i class="fas fa-exclamation-triangle" style="color: var(--red);"></i> Los lugares se asignan conforme se inscriben. Última fecha de pago: 15 de octubre.</p>
+        </div>
+        <div class="modal-section">
+          <h4>Importante</h4>
+          <ul>
+            <li><i class="fas fa-times-circle" style="color: var(--red);"></i> No hay cambios de zona, cancelaciones, reembolsos o traspasos.</li>
+            <li><i class="fas fa-check-circle" style="color: var(--green);"></i> Al apartar te agregaremos al grupo.</li>
+            <li><i class="fas fa-check-circle" style="color: var(--green);"></i> Sin depósito no hay apartado.</li>
+            <li><i class="fas fa-check-circle" style="color: var(--green);"></i> Guarda tus recibos de pago.</li>
+          </ul>
+        </div>
+       <div style="text-align: center;">
+  <a href="https://wa.me/529612048783?text=Hola%2C%20quiero%20comprar%20la%20entrada%20en%20Beauty%20Boss%20Lash%20Congress.%20Por%20favor%20ind%C3%ADquenme%20disponibilidad."
+     class="modal-btn"
+     target="_blank">
+    <i class="fab fa-whatsapp"></i> Contactar ahora
+  </a>
+</div>
+
+      `;
+      modalBody.innerHTML = html;
+      modal.classList.add('active');
+    }
+  </script>
 </body>
+
 </html>
