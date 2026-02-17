@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Conoce a las organizadoras del Beauty Boss Lash Congress - Un equipo de mujeres visionarias transformando la industria de la belleza" />
+  <meta name="description"
+    content="Conoce a las organizadoras del Beauty Boss Lash Congress - Un equipo de mujeres visionarias transformando la industria de la belleza" />
   <title>Nosotros - Beauty Boss Lash Congress</title>
 
   <!-- FUENTES Y FONT AWESOME -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
 
   <style>
     /* ===== RESET Y VARIABLES GLOBALES ===== */
@@ -38,7 +42,10 @@
       overflow-x: hidden;
     }
 
-    h1, h2, h3, h4 {
+    h1,
+    h2,
+    h3,
+    h4 {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
     }
@@ -64,10 +71,12 @@
       z-index: 99999;
       transition: opacity 0.5s ease, visibility 0.5s;
     }
+
     .loader-overlay.hidden {
       opacity: 0;
       visibility: hidden;
     }
+
     .spinner {
       width: 80px;
       height: 80px;
@@ -76,8 +85,11 @@
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
+
     @keyframes spin {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     /* ===== MODAL (opcional) ===== */
@@ -97,10 +109,12 @@
       visibility: hidden;
       transition: all 0.3s ease;
     }
+
     .modal-overlay.active {
       opacity: 1;
       visibility: visible;
     }
+
     .modal-content {
       background: var(--white);
       max-width: 600px;
@@ -110,8 +124,9 @@
       border-radius: 20px;
       padding: 30px;
       position: relative;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     }
+
     .modal-close {
       position: absolute;
       top: 15px;
@@ -121,6 +136,7 @@
       cursor: pointer;
       transition: color 0.3s;
     }
+
     .modal-close:hover {
       color: var(--red);
     }
@@ -159,7 +175,7 @@
       font-weight: 700;
       line-height: 1.2;
       margin-bottom: 20px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     .hero-description {
@@ -182,6 +198,7 @@
       background-color: var(--red);
       color: var(--white);
     }
+
     .btn-red:hover {
       background-color: var(--white);
       color: var(--red);
@@ -193,6 +210,7 @@
       border: 2px solid var(--red);
       color: var(--red);
     }
+
     .btn-outline:hover {
       background-color: var(--red);
       color: var(--white);
@@ -306,7 +324,8 @@
       margin-bottom: 20px;
     }
 
-    .mvv-card p, .mvv-card span {
+    .mvv-card p,
+    .mvv-card span {
       color: var(--gray-dark);
     }
 
@@ -404,30 +423,67 @@
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
-      .hero { min-height: 500px; }
+      .hero {
+        min-height: 500px;
+      }
     }
+
     @media (max-width: 768px) {
-      .hero-title { font-size: 2.5rem; }
-      .hero-description { font-size: 1rem; }
-      .section-title { font-size: 2rem; }
-      .hero { min-height: 400px; }
-      .grid-2 { grid-template-columns: 1fr; }
-      .cta-card { padding: 40px 20px; }
-      .cta-card h3 { font-size: 1.5rem; }
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-description {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .hero {
+        padding-top: 3rem;
+        min-height: 400px;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-card {
+        padding: 40px 20px;
+      }
+
+      .cta-card h3 {
+        font-size: 1.5rem;
+      }
+
       .parallax-section {
         background-attachment: scroll;
       }
     }
+
     @media (max-width: 480px) {
-      .hero { min-height: 300px; }
-      .btn { padding: 12px 25px; }
-      .hero-title { font-size: 2rem; }
+      .hero {
+        /* padding-top: 2rem; */
+        min-height: 300px;
+      }
+
+      .btn {
+        padding: 12px 25px;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
       .section-block {
         margin: 1rem 0;
       }
     }
   </style>
 </head>
+
 <body>
   <!-- LOADER -->
   <div class="loader-overlay" id="loader">
@@ -451,7 +507,8 @@
       <div class="hero-content">
         <h1 class="hero-title">Nosotros</h1>
         <p class="hero-description">
-          Conoce al equipo que transforma la industria de la belleza a través de educación de excelencia y experiencias únicas.
+          Conoce al equipo que transforma la industria de la belleza a través de educación de excelencia y experiencias
+          únicas.
         </p>
       </div>
     </section>
@@ -465,7 +522,8 @@
               style="width: 100%; height: 500px; object-fit: cover;">
             <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 30px; 
                        background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));">
-              <p style="color: var(--white); margin: 0; font-style: italic;">"Transformando la industria, una pestaña a la vez"</p>
+              <p style="color: var(--white); margin: 0; font-style: italic;">"Transformando la industria, una pestaña a
+                la vez"</p>
             </div>
           </div>
         </div>
@@ -524,28 +582,33 @@
           <!-- Educación de Primer Nivel -->
           <div class="value-card">
             <svg class="icon-svg" viewBox="0 0 24 24">
-              <path d="M12 2L2 7v10l10 5 10-5V7l-10-5zm0 2.3L19 8.5v7l-7 3.5-7-3.5v-7l7-3.5zM11 10h2v5h-2v-5zm0-2h2v2h-2V8z"/>
+              <path
+                d="M18 2H6v3H3v3c0 3.31 2.69 6 6 6 .7 1.19 1.98 2 3.5 2s2.8-.81 3.5-2c3.31 0 6-2.69 6-6V5h-3V2zm-2 2v3c0 2.21-1.79 4-4 4s-4-1.79-4-4V4h8zM5 8V7h1v1c0 .7.11 1.37.3 2H6c-.55 0-1-.45-1-1zm14 0c0 .55-.45 1-1 1h-.3c.19-.63.3-1.3.3-2V7h1v1zm-7 8c-1.1 0-2-.9-2-2h4c0 1.1-.9 2-2 2zm-3 2h6v2H9v-2z" />
             </svg>
             <h3>Educación de Primer Nivel</h3>
-            <p>Ponencias magistrales con expertos internacionales, técnicas innovadoras y conocimiento práctico aplicable desde el primer día.</p>
+            <p>Ponencias magistrales con expertos internacionales, técnicas innovadoras y conocimiento práctico
+              aplicable desde el primer día.</p>
           </div>
 
           <!-- Experiencia Inmersiva -->
           <div class="value-card">
             <svg class="icon-svg" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 10h2v5h-2v-5zm0-2h2v2h-2V8z"/>
+              <path d="M5 16L3 6l5 3 4-5 4 5 5-3-2 10H5zm0 2h14v2H5v-2z" />
             </svg>
             <h3>Experiencia Inmersiva</h3>
-            <p>Inspirado en el circo de lujo, cada detalle está diseñado para sorprenderte. Shows en vivo, decoración temática y momentos mágicos.</p>
+            <p>Inspirado en el circo de lujo, cada detalle está diseñado para sorprenderte. Shows en vivo, decoración
+              temática y momentos mágicos.</p>
           </div>
 
           <!-- Innovación Constante -->
           <div class="value-card">
             <svg class="icon-svg" viewBox="0 0 24 24">
-              <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V17h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-1 .05 1.16.38 2 1.06 2 1.95V17h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+              <path
+                d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V17h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-1 .05 1.16.38 2 1.06 2 1.95V17h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
             </svg>
             <h3>Innovación Constante</h3>
-            <p>Sé de los primeros en conocer las últimas tendencias, técnicas revolucionarias y productos innovadores de la industria.</p>
+            <p>Sé de los primeros en conocer las últimas tendencias, técnicas revolucionarias y productos innovadores de
+              la industria.</p>
           </div>
         </div>
       </div>
@@ -564,8 +627,10 @@
         <!-- MISIÓN -->
         <div class="mvv-card">
           <svg class="icon-svg" viewBox="0 0 24 24">
-            <path d="M12 2L2 7v10l10 5 10-5V7l-10-5zm0 2.3L19 8.5v7l-7 3.5-7-3.5v-7l7-3.5zM11 10h2v5h-2v-5zm0-2h2v2h-2V8z"/>
+            <path
+              d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 2a8 8 0 110 16 8 8 0 010-16zm0 3a5 5 0 100 10 5 5 0 000-10zm0 3a2 2 0 110 4 2 2 0 010-4z" />
           </svg>
+
           <h3>Nuestra Misión</h3>
           <p>
             Transformar la industria de la belleza a través de educación de excelencia,
@@ -577,8 +642,10 @@
         <!-- VISIÓN -->
         <div class="mvv-card">
           <svg class="icon-svg" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 10h2v5h-2v-5zm0-2h2v2h-2V8z"/>
+            <path
+              d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7zm0 12a5 5 0 110-10 5 5 0 010 10zm0-2.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
           </svg>
+
           <h3>Nuestra Visión</h3>
           <p>
             Ser el congreso de referencia en Latinoamérica para profesionales de la belleza,
@@ -590,8 +657,10 @@
         <!-- VALORES -->
         <div class="mvv-card">
           <svg class="icon-svg" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            <path
+              d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 3l2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5L4.8 10l5-.7L12 5z" />
           </svg>
+
           <h3>Nuestros Valores</h3>
           <div class="value-list">
             <div class="value-item">
@@ -638,7 +707,8 @@
       <div class="text-center" style="margin-top: 80px;">
         <div class="cta-card">
           <svg class="icon-svg" style="width: 60px; height: 60px;" viewBox="0 0 24 24">
-            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM7 10h5v2H7v-2zm0 4h5v2H7v-2z"/>
+            <path
+              d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM7 10h5v2H7v-2zm0 4h5v2H7v-2z" />
           </svg>
           <h3>¿Lista para Unirte a Nosotras?</h3>
           <p>
@@ -661,8 +731,8 @@
   <script src="/js/include.js"></script>
   <script>
     // Ocultar loader cuando todo esté cargado
-    window.addEventListener('load', function() {
-      setTimeout(function() {
+    window.addEventListener('load', function () {
+      setTimeout(function () {
         document.getElementById('loader').classList.add('hidden');
       }, 500);
     });
@@ -671,15 +741,16 @@
     const modal = document.getElementById('modal');
     const modalClose = document.getElementById('modalClose');
     if (modalClose) {
-      modalClose.addEventListener('click', function() {
+      modalClose.addEventListener('click', function () {
         modal.classList.remove('active');
       });
     }
-    window.addEventListener('click', function(e) {
+    window.addEventListener('click', function (e) {
       if (e.target === modal) {
         modal.classList.remove('active');
       }
     });
   </script>
 </body>
+
 </html>

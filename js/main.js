@@ -94,13 +94,13 @@ function initHeaderScroll() {
         const currentScroll = window.pageYOffset;
         
         // Solo si el menú NO está abierto
-        if (!isMenuOpen) {
-          if (currentScroll > lastScroll && currentScroll > 100) {
-            header.style.transform = 'translateY(-100%)';
-          } else {
-            header.style.transform = 'translateY(0)';
-          }
-        }
+        // if (!isMenuOpen) {
+        //   if (currentScroll > lastScroll && currentScroll > 100) {
+        //     header.style.transform = 'translateY(-100%)';
+        //   } else {
+        //     header.style.transform = 'translateY(0)';
+        //   }
+        // }
         
         // Agregar clase cuando se hace scroll
         header.classList.toggle('scrolled', currentScroll > 50);
